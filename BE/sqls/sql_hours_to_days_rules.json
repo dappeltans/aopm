@@ -1,0 +1,51 @@
+{
+    "select": {
+        "getAll": "
+            SELECT  
+                 id,
+                 unique_ref_id,
+                 user_id,
+                 day_type_id,
+                 min_hours,
+                 max_hours,
+                 nbr_days
+            FROM hours_to_days_rules 
+        ",
+        "checkExistenceByUnique_ref_id": "
+            SELECT count(*) as total 
+            FROM hours_to_days_rules 
+            WHERE unique_ref_id = '@hours_to_days_rules@unique_ref_id@'
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into hours_to_days_rules ( 
+                 unique_ref_id,
+                 user_id,
+                 day_type_id,
+                 min_hours,
+                 max_hours,
+                 nbr_days
+            )
+            VALUES (
+                 '@hours_to_days_rules@unique_ref_id@',
+                 '@hours_to_days_rules@user_id@',
+                 '@hours_to_days_rules@day_type_id@',
+                 '@hours_to_days_rules@min_hours@',
+                 '@hours_to_days_rules@max_hours@',
+                 '@hours_to_days_rules@nbr_days@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE hours_to_days_rules SET @fields@values@
+            WHERE id = '@hours_to_days_rules@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM hours_to_days_rules WHERE id = '@hours_to_days_rules@id@'
+        "
+    }
+}

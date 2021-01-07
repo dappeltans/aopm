@@ -1,0 +1,8 @@
+{
+    "alreadyExists.txt"     : "A $table_name$ with the given $field_name$ already exists. Please use another $field_name$.",
+    "getError.txt"          : "An error occurred while trying to retrieve the items in $table_name$.",
+    "getByIdError.txt"      : "An error occurred while trying to retrieve the item in $table_name$ by using the provided item's id.",
+    "createError.txt"       : "An error occurred while trying to create a new item in $table_name$.",
+    "updateByIdError.txt"   : "An error occurred while trying to update the item in $table_name$ by using the provided item's id.",
+    "deleteByIdError.txt"   : "An error occurred while trying to delete the item in $table_name$ by using the provided item's id."
+}

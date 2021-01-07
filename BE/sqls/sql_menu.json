@@ -1,0 +1,86 @@
+{
+    "select": {
+        "getAllOffsetLimit": "
+            SELECT  
+                 id,
+                 menu_item_number,
+                 parent_id,
+                 menu_level,
+                 label,
+                 is_leaf,
+                 icon_cls,
+                 handler,
+                 active
+            FROM menu 
+            ORDER BY id 
+            LIMIT @pagination@limit@ OFFSET @pagination@offset@
+        ",
+        "getAll": "
+            SELECT  
+                 id,
+                 menu_item_number,
+                 parent_id,
+                 menu_level,
+                 label,
+                 is_leaf,
+                 icon_cls,
+                 handler,
+                 active
+            FROM menu 
+        ",
+        "getById": "
+            SELECT  
+                 id,
+                 menu_item_number,
+                 parent_id,
+                 menu_level,
+                 label,
+                 is_leaf,
+                 icon_cls,
+                 handler,
+                 active
+            FROM menu 
+            WHERE id = '@menu@id@'
+        ",
+        "checkExistenceByUniqueReference": "
+            SELECT count(*) as total 
+            FROM menu 
+            WHERE menu_item_number = '@menu@menu_item_number@'
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into menu ( 
+                 menu_item_number,
+                 parent_id,
+                 menu_level,
+                 label,
+                 is_leaf,
+                 icon_cls,
+                 handler,
+                 active
+            )
+            VALUES (
+                 '@menu@menu_item_number@',
+                 '@menu@parent_id@',
+                 '@menu@menu_level@',
+                 '@menu@label@',
+                 '@menu@is_leaf@',
+                 '@menu@icon_cls@',
+                 '@menu@handler@',
+                 '@menu@active@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE menu SET @fields@values@
+            WHERE id = '@menu@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM menu WHERE id = '@menu@id@'
+        "
+    }
+}

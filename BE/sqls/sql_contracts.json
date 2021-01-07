@@ -1,0 +1,105 @@
+{
+    "select": {
+        "getByContractId": "
+                                        SELECT C.id,
+                                                C.customer_id, 
+                                                C.customer_reference, 
+                                                C.description,
+                                                C.code,
+                                                C.contract_mode_id,
+                                                DATE_FORMAT(C.startdate, '%Y-%m-%d') as startdate,
+                                                DATE_FORMAT(C.enddate, '%Y-%m-%d') as enddate,
+                                                C.invoice_currency_id,
+                                                C.invoice_base_id, 
+                                                C.budget,
+                                                C.active,
+                                                I.code as invoice_base_code,
+                                                I.description as invoice_base_description,
+                                                M.code as contract_mode_code,
+                                                M.description as contract_mode_description,
+                                                U.code as currency_code,
+                                                U.description as currency_description
+                                        FROM contracts as C 
+                                            LEFT JOIN contract_invoice_base I on C.invoice_base_id = I.id 
+                                            LEFT JOIN contract_mode M on C.contract_mode_id = M.id
+                                            LEFT JOIN currencies U on C.invoice_currency_id = U.id
+                                        WHERE C.id = '@contracts@contractId@'
+                                    ",
+        "getByCustomerId": "
+                                        SELECT C.id,
+                                            C.customer_id,
+                                            P.code as customer_code,
+                                            P.name as customer_name, 
+                                            C.customer_reference, 
+                                            C.description,
+                                            C.code,
+                                            C.contract_mode_id,
+                                            M.code as contract_mode_code,
+                                            M.description as contract_mode_description,
+                                            DATE_FORMAT(C.startdate, '%Y-%m-%d') as startdate,
+                                            DATE_FORMAT(C.enddate, '%Y-%m-%d') as enddate,
+                                            C.invoice_currency_id,
+                                            E.code as invoice_currency_code,
+                                            E.description as currency_description,
+                                            C.invoice_base_id,
+                                            I.code as invoice_base_code,
+                                            C.budget,
+                                            I.description as invoice_base_description,
+                                            C.active
+                                        FROM contracts as C 
+                                            LEFT JOIN contract_invoice_base I on C.invoice_base_id = I.id 
+                                            LEFT JOIN contract_mode M on C.contract_mode_id = M.id
+                                            LEFT JOIN customers P on C.customer_id = P.id
+                                            LEFT JOIN currencies E on C.invoice_currency_id = E.id
+                                        WHERE C.customer_id = '@contracts@customerId@'
+                                        ORDER BY C.active desc
+        ",
+        "checkExistenceByCode": "
+                                    SELECT count(*) as total 
+                                    FROM contracts 
+                                    WHERE code = '@contracts@code@'
+        "
+    },
+    
+    "insert": {
+        "createNew":  "
+                                INSERT INTO contracts ( customer_id, 
+                                                        customer_reference, 
+                                                        description,
+                                                        code,
+                                                        budget,
+                                                        contract_mode_id,
+                                                        startdate,
+                                                        enddate,
+                                                        invoice_currency_id,
+                                                        invoice_base_id, 
+                                                        active
+                                                      ) 
+                                VALUES ('@contracts@customer_id@', 
+                                        '@contracts@customer_reference@', 
+                                        '@contracts@description@', 
+                                        '@contracts@code@',
+                                        '@contracts@budget@',
+                                        '@contracts@contract_mode_id@',
+                                        '@contracts@startdate@',
+                                        '@contracts@enddate@',
+                                        '@contracts@invoice_currency_id@',
+                                        '@contracts@invoice_base_id@',
+                                        '@contracts@active@'
+                                    )
+        "
+    },
+    
+    "update": {
+        "updateById" : "
+                            UPDATE contracts SET @fields@values@
+                            WHERE id = '@contracts@id@'
+        "
+    },
+    
+    "delete": {
+        "deleteById": "
+                            DELETE FROM contracts WHERE id = '@contracts@id@'
+        "
+    }
+}

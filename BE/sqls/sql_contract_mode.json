@@ -1,0 +1,39 @@
+{
+    "select": {
+        "getAll": "
+                                        SELECT C.id,
+                                                C.code, 
+                                                C.description, 
+                                                C.active
+                                        FROM contract_mode as C 
+                            ",
+        "checkExistenceByCode": "
+                                                SELECT count(*) as total 
+                                                FROM contract_mode 
+                                                WHERE code = '@contract_mode@code@'
+                                            "
+    },
+    "insert": {
+        "createNew": "
+                                    INSERT into contract_mode ( code,
+                                                                description,
+                                                                active
+                                    )
+                                    VALUES ('@contract_mode@code@', 
+                                            '@contract_mode@description@', 
+                                            '@contract_mode@active@'
+                                    )
+                              "
+    },
+    "update": {
+        "updateById": "
+                                    UPDATE contract_mode SET @fields@values@
+                                    WHERE id = '@contract_mode@id@'
+                              "
+    },
+    "delete": {
+        "deleteById": "
+                                    DELETE FROM contract_mode WHERE id = '@contract_mode@id@'
+                                  "
+    }
+}

@@ -1,0 +1,48 @@
+{
+    "select": {
+        "getAllOffsetLimit": "
+            SELECT  
+$list_table_fields$
+            FROM $table_name$ 
+            ORDER BY id 
+            LIMIT @pagination@limit@ OFFSET @pagination@offset@
+        ",
+        "getAll": "
+            SELECT  
+$list_table_fields$
+            FROM $table_name$ 
+        ",
+        "getById": "
+            SELECT  
+$list_table_fields$
+            FROM $table_name$ 
+            WHERE id = '@$table_name$@id@'
+        ",
+        "checkExistenceByUniqueReference": "
+            SELECT count(*) as total 
+            FROM $table_name$ 
+            WHERE $field_name$ = '@$table_name$@$field_name$@'
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into $table_name$ ( 
+$list_table_fields_without_id$
+            )
+            VALUES (
+$list_table_field_references_without_id$
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE $table_name$ SET @fields@values@
+            WHERE id = '@$table_name$@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM $table_name$ WHERE id = '@$table_name$@id@'
+        "
+    }
+}

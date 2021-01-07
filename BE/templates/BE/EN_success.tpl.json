@@ -1,0 +1,9 @@
+{
+    "getSuccess.txt"            : "$Table_name$ successfully received.",
+    "getByIdSuccess.txt"        : "$Table_name$ item successfully received by using the provided item's id.",
+    "createSuccess.txt"         : "$Table_name$ successfully created.",
+    "updateByIdSuccess.txt"     : "$Table_name$ item successfully updated by using the provided item's id.",
+    "deleteByIdSuccess.txt"     : "$Table_name$ item successfully deleted by using the provided item's id.",
+    "noIdToDeleteSuccess.txt"   : "No $table_name$ with given id found to delete.",
+    "noIdToUpdateSuccess.txt"   : "No $table_name$ with given id found to update."
+}

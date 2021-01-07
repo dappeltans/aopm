@@ -1,0 +1,508 @@
+{
+    "@pagination": {
+        "@page@": "/^\\d{1,11}$/",
+        "@start@": "/^\\d{1,11}$/",
+        "@limit@": "/^\\d{1,4}$/",
+        "@offset@": "/^\\d{1,11}$/"
+    },
+    "@_code_generator": {
+        "@tenant@": "/^.{1,255}$/",
+        "@tableName@": "/^.{1,255}$/",
+        "@displayGroupName@": "/^.{1,255}$/",
+        "@uniqueReferenceColumnName@": "/^.{1,1000}$/",
+        "@limit@": "/^\\d{1,4}$/",
+        "@page@": "/^\\d{1,11}$/",
+        "@start@": "/^\\d{1,11}$/"
+    },
+    "@general": {
+        "@active@": "/^[0-1]$/"
+    },
+    "@login": {
+        "@token@": "/^.{0,4000}$/",
+        "@tenant@": "/^.{0,255}$/",
+        "@email_address@": "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/"
+    },
+    "@users": {
+        "@id@": "/^\\d{1,11}$/",
+        "@active@": "/^[0,1]$/",
+        "@first_name@": "/^.{1,50}$/",
+        "@last_name@": "/^.{1,50}$/",
+        "@password@": "/^.{1,255}$/",
+        "@email_address@": "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/",
+        "@date_of_birth@": "/^.{0,256}$/",
+        "@date_of_hire@": "/^.{0,256}$/",
+        "@phone_office@": "/^.{0,25}$/",
+        "@phone_mobile@": "/^.{0,25}$/",
+        "@creation_datetime@": "/^.{0,256}$/",
+        "@picture@": "/^.{0,256}$/",
+        "@profile_id@": "/^\\d{1,11}$/",
+        "@user_type_id@": "/^\\d{1,11}$/",
+        "@language_id@": "/^\\d{1,11}$/",
+        "@last_modified_datetime@": "/^.{0,256}$/",
+        "@ou_id@": "/^\\d{1,11}$/",
+        "@display_in_planning@": "/^[0,1]$/",
+        "@display_in_skills@": "/^[0,1]$/"
+    },
+    "@user_tenants": {
+        "@id@": "/^\\d{1,11}$/",
+        "@user_id@": "/^\\d{1,11}$/",
+        "@tenant_id@": "/^\\d{1,11}$/"
+    },
+    "@tenants": {
+        "@id@": "/^\\d{1,11}$/",
+        "@name@": "/^.{1,100}$/",
+        "@active@": "/^[0,1]$/"
+    },
+    "@contracts": {
+        "@contractId@": "/^\\d{1,12}$/",
+        "@customerId@": "/^\\d{1,12}$/",
+        "@code@": "/^.{1,50}$/",
+        "@description@": "/^.{1,255}$/",
+        "@id@": "/^\\d{1,12}$/",
+        "@customer_id@": "/^\\d{1,12}$/",
+        "@customer_reference@": "/^.{1,50}$/",
+        "@contract_mode_id@": "/^\\d{1,12}$/",
+        "@startdate@": "/(\\d{4,4}-\\d{2,2}-\\d{2,2})?/",
+        "@enddate@": "/(\\d{4,4}-\\d{2,2}-\\d{2,2})?/",
+        "@invoice_currency_id@": "/^\\d{1,12}$/",
+        "@invoice_base_id@": "/^\\d{1,12}$/",
+        "@budget@": "/^\\d{1,12}([\\.|\\,])?(\\d{0,2})?$/",
+        "@active@": "/^[0-1]$/"
+    },
+    "@contract_invoice_base": {
+        "@code@": "/^.{1,5}$/",
+        "@description@": "/^.{1,50}$/",
+        "@id@": "/^\\d{1,12}$/",
+        "@active@": "/^[0-1]$/"
+    },
+    "@contract_mode": {
+        "@code@": "/^.{1,20}$/",
+        "@description@": "/^.{1,100}$/",
+        "@id@": "/^\\d{1,12}$/",
+        "@active@": "/^[0-1]$/"
+    },
+    "@contract_roles": {
+        "@code@": "/^.{1,20}$/",
+        "@description@": "/^.{1,100}$/",
+        "@id@": "/^\\d{1,12}$/",
+        "@active@": "/^[0-1]$/"
+    },
+    "@currencies": {
+        "@code@": "/^.{1,20}$/",
+        "@description@": "/^.{1,100}$/",
+        "@id@": "/^\\d{1,12}$/",
+        "@active@": "/^[0-1]$/"
+    },
+    "@countries": {
+        "@id@": "/^\\d{1,11}$/",
+        "@code@": "/^.{1,2}$/",
+        "@description@": "/^.{1,50}$/",
+        "@active@": ""
+    },
+    "@languages": {
+        "@id@": "/^\\d{1,11}$/",
+        "@code@": "/^.{1,255}$/",
+        "@description@": "/^.{1,255}$/",
+        "@active@": ""
+    },
+    "@audit": {
+        "@referenceId@": "/^.{1,255}$/"
+    },
+    "@intervention_types": {
+        "@code@": "/^.{1,20}$/",
+        "@description@": "/^.{1,100}$/",
+        "@id@": "/^\\d{1,12}$/",
+        "@active@": "/^[0-1]$/"
+    },
+    "@issue_types": {
+        "@code@": "/^.{1,20}$/",
+        "@description@": "/^.{1,100}$/",
+        "@id@": "/^\\d{1,12}$/",
+        "@active@": "/^[0-1]$/"
+    },
+    "@user_types": {
+        "@id@": "/^\\d{1,11}$/",
+        "@code@": "/^.{1,20}$/",
+        "@description@": "/^.{1,100}$/",
+        "@active@": ""
+    },
+    "@preferences_categories": {
+        "@code@": "/^.{1,20}$/",
+        "@description@": "/^.{1,100}$/",
+        "@id@": "/^\\d{1,12}$/",
+        "@active@": "/^[0-1]$/"
+    },
+    "@profiles": {
+        "@id@": "/^\\d{1,11}$/",
+        "@code@": "/^.{1,20}$/",
+        "@description@": "/^.{1,100}$/",
+        "@active@": "/^\\d{1,1}$/",
+        "@allowed@": "/^[0-1]$/"
+    },
+    "@profileRights": {
+        "@id@": "/^(M|MI)\\-\\d{1,11}$/",
+        "@profile_id@": "/^\\d{1,11}$/",
+        "@allowed@": "/^[0-1]$/"
+    },
+    "@profile_menu_rights": {
+        "@id@": "/^\\d{1,11}$/",
+        "@unique_ref_id@": "/^.{1,50}$/",
+        "@profile_id@": "/^\\d{1,11}$/",
+        "@menu_id@": "/^\\d{1,11}$/",
+        "@allowed@": "/^\\d{1,1}$/"
+    },
+    "@profile_menu_item_rights": {
+        "@id@": "/^\\d{1,11}$/",
+        "@unique_ref_id@": "/^.{1,50}$/",
+        "@profile_id@": "/^\\d{1,11}$/",
+        "@menu_item_rights_id@": "/^\\d{1,11}$/",
+        "@allowed@": "/^\\d{1,1}$/"
+    },
+    "@reports": {
+        "@code@": "/^.{1,20}$/",
+        "@description@": "/^.{1,100}$/",
+        "@id@": "/^\\d{1,12}$/",
+        "@active@": "/^[0-1]$/"
+    },
+    "@contract_persons": {
+        "@contract_id@": "/^\\d{1,12}$/",
+        "@user_id@": "/^\\d{1,12}$/",
+        "@tarif_id@": "/^\\d{1,12}$/",
+        "@assigned_units@": "/^\\d{1,12}([\\.|\\,])?(\\d{0,2})?$/",
+        "@id@": "/^\\d{1,12}$/",
+        "@active@": "/^[0-1]$/"
+    },
+    "@contract_tarif_types": {
+        "@code@": "/^.{1,20}$/",
+        "@description@": "/^.{1,100}$/",
+        "@id@": "/^\\d{1,12}$/",
+        "@active@": "/^[0-1]$/"
+    },
+    "@contract_tarifs": {
+        "@id@": "/^\\d{1,12}$/",
+        "@contract_id@": "/^\\d{1,12}$/",
+        "@contract_role_id@": "/^\\d{1,12}$/",
+        "@tarif@": "/^\\d{1,12}.?\\d{1,2}?$/",
+        "@invoice_base_id@": "/^\\d{1,12}$/",
+        "@currency_id@": "/^\\d{1,12}$/",
+        "@active@": "/^[0-1]$/"
+    },
+    "@customers": {
+        "@id@": "/^\\d{1,11}$/",
+        "@name@": "/^.{1,50}$/",
+        "@code@": "/^.{1,8}$/",
+        "@fgcolor@": "/^.{1,10}$/",
+        "@bgcolor@": "/^.{1,10}$/",
+        "@ou_id@": "/^\\d{1,11}$/",
+        "@logo@": "/^.{1,255}$/",
+        "@active@": ""
+    },
+    "@holidays": {
+        "@id@": "/^\\d{1,11}$/",
+        "@ou_id@": "/^\\d{1,11}$/",
+        "@user_id@": "/^\\d{1,11}$/",
+        "@year@": "/^\\d{4,4}$/",
+        "@legal@": "/^\\d{1,12}([\\.|\\,])?(\\d{0,2})?$/",
+        "@extra1@": "/^\\d{1,12}([\\.|\\,])?(\\d{0,2})?$/",
+        "@extra2@": "/^\\d{1,12}([\\.|\\,])?(\\d{0,2})?$/",
+        "@extra3@": "/^\\d{1,12}([\\.|\\,])?(\\d{0,2})?$/",
+        "@extra4@": "/^\\d{1,12}([\\.|\\,])?(\\d{0,2})?$/",
+        "@extra5@": "/^\\d{1,12}([\\.|\\,])?(\\d{0,2})?$/"
+    },
+    "@menu": {
+        "@id@": "/^\\d{1,11}$/",
+        "@menu_item_number@": "/^.{1,10}$/",
+        "@parent_id@": "/^.{1,25}$/",
+        "@menu_level@": "/^\\d{1,11}$/",
+        "@label@": "/^.{1,50}$/",
+        "@is_leaf@": "/^\\d{1,1}$/",
+        "@icon_cls@": "/^.{1,50}$/",
+        "@handler@": "/^.{1,4000}$/",
+        "@action@": "/^.{1,50}$/",
+        "@active@": "/^\\d{1,1}$/",
+        "@menu_item_id@": "/^.{1,50}$/"
+    },
+    "@menu_item_rights": {
+        "@id@": "/^\\d{1,11}$/",
+        "@menu_item_id@": "/^\\d{1,11}$/",
+        "@menu_item_right_label@": "/^.{1,50}$/",
+        "@menu_item_right_desription@": "/^.{1,255}$/",
+        "@variable_name@": "/^.{1,50}$/",
+        "@active@": "/^\\d{1,1}$/"
+    },
+    "@organisational_units": {
+        "@id@": "/^\\d{1,11}$/",
+        "@country_id@": "/^\\d{1,11}$/",
+        "@city@": "/^.{1,100}$/",
+        "@name@": "/^.{1,100}$/",
+        "@code@": "/^.{1,10}$/",
+        "@address_line_1@": "/^.{1,100}$/",
+        "@address_line_2@": "/^.{1,100}$/",
+        "@address_line_3@": "/^.{1,100}$/",
+        "@address_line_4@": "/^.{1,100}$/",
+        "@contact_person_name@": "/^.{1,100}$/",
+        "@contact_person_email@": "/^.{1,100}$/",
+        "@contact_person_phone@": "/^.{1,100}$/",
+        "@active@": "/^[0,1]$/",
+        "@is_leaf@": "/^[0,1]$/",
+        "@parent_id@": "/^.{1,20}$/",
+        "@level@": "/^\\d{1,11}$/",
+        "@reference@": "/^.{1,20}$/"
+    },
+    "@organisational_unit_preferences": {
+        "@id@": "/^\\d{1,11}$/",
+        "@ou_id@": "/^\\d{1,11}$/",
+        "@preference_name@": "/^.{1,255}$/",
+        "@preference_value@": "/^.{1,4000}$/",
+        "@active@": "/^\\d{1,1}$/"
+    },
+    "@planning": {
+        "@id@": "/^\\d{1,11}$/",
+        "@unique_ref_id@": "/^.{1,50}$/",
+        "@year@": "/^\\d{1,11}$/",
+        "@month@": "/^\\d{1,11}$/",
+        "@day@": "/^\\d{1,11}$/",
+        "@intervention_date@": "",
+        "@start_time@": "",
+        "@end_time@": "",
+        "@ampm@": "/^.{1,2}$/",
+        "@user_id@": "/^\\d{1,11}$/",
+        "@customer_id@": "/^\\d{1,11}$/",
+        "@contract_id@": "/^\\d{1,11}$/",
+        "@tarif_id@": "/^\\d{1,11}$/",
+        "@booking_type@": "/^\\d{1,1}$/",
+        "@location@": "/^.{1,25}$/",
+        "@date_update@": "",
+        "@time_update@": "",
+        "@epoch_update@": "/^\\d{1,20}$/",
+        "@update_user_id@": "/^\\d{1,11}$/",
+        "@mail_sent@": "/^\\d{1,4}$/",
+        "@date_mail_sent@": "",
+        "@time_mail_sent@": "",
+        "@note@": "/^.{1,1000}$/",
+        "@user_note@": "/^.{1,1000}$/",
+        "@ou_id@": "/^\\d{1,11}$/"
+    },
+    "@hours_to_days_daytypes": {
+        "@id@": "/^\\d{1,11}$/",
+        "@name@": "/^.{1,25}$/"
+    },
+    "@hours_to_days_rules": {
+        "@id@": "/^\\d{1,11}$/",
+        "@unique_ref_id@": "/^.{1,50}$/",
+        "@user_id@": "/^\\d{1,11}$/",
+        "@day_type_id@": "/^\\d{1,11}$/",
+        "@min_hours@": "/^\\d{1,11}$/",
+        "@max_hours@": "/^\\d{1,11}$/",
+        "@nbr_days@": "/^\\d{1,11}.?\\d{0,1}?$/"
+    },
+    "@preferences": {
+        "@id@": "/^\\d{1,11}$/",
+        "@category_id@": "/^\\d{1,11}$/",
+        "@preference_name@": "/^.{1,50}$/",
+        "@preference_possible_values@": "/^.{1,255}$/"
+    },
+    "@report_fields": {
+        "@id@": "/^\\d{1,11}$/",
+        "@unique_ref_id@": "/^.{1,50}$/",
+        "@report_id@": "/^\\d{1,11}$/",
+        "@field_name@": "/^.{1,50}$/",
+        "@display_name@": "/^.{1,50}$/",
+        "@width_in_pixels@": "/^\\d{1,11}$/",
+        "@width_in_excel@": "/^\\d{1,11}$/",
+        "@alignment@": "/^.{1,20}$/",
+        "@order@": "/^\\d{1,11}$/",
+        "@selectable@": "/^\\d{1,1}$/",
+        "@to_display@": "/^\\d{1,1}$/"
+    },
+    "@report_views": {
+        "@id@": "/^\\d{1,11}$/",
+        "@unique_ref_id@": "/^.{1,50}$/",
+        "@report_id@": "/^\\d{1,11}$/",
+        "@report_field_id@": "/^\\d{1,11}$/",
+        "@user_id@": "/^\\d{1,11}$/",
+        "@visible@": "/^\\d{1,1}$/"
+    },
+    "@timesheet_events": {
+        "@id@": "/^\\d{1,11}$/",
+        "@user_id@": "/^\\d{1,11}$/",
+        "@contract_id@": "/^\\d{1,11}$/",
+        "@tarif_id@": "/^\\d{1,11}$/",
+        "@task_type_id@": "/^\\d{1,11}$/",
+        "@project_task_id@": "/^\\d{1,11}$/",
+        "@start_time@": "/\\d{4,4}-\\d{2,2}-\\d{2,2} \\d{2,2}:\\d{2,2}:\\d{2,2}/",
+        "@end_time@": "/\\d{4,4}-\\d{2,2}-\\d{2,2} \\d{2,2}:\\d{2,2}:\\d{2,2}/",
+        "@onsite@": "/^\\d{1,1}$/",
+        "@description_long@": "",
+        "@description_short@": "/^.{1,255}$/",
+        "@percentage_completed@": "/^\\d{1,11}$/",
+        "@comment@": "/^.{1,4000}$/",
+        "@required_customer_action@": "/^.{1,4000}$/",
+        "@issue_supportcase_created@": "/^\\d{1,1}$/",
+        "@issue_supportcase_id@": "/^.{1,20}$/",
+        "@issue_supportcase_description@": "/^.{1,4000}$/",
+        "@issue_blocking@": "/^\\d{1,1}$/",
+        "@issue_description@": "/^.{1,4000}$/",
+        "@issue_lost_hours@": "/^\\d{1,11}$/",
+        "@issue_lost_minutes@": "/^\\d{1,11}$/",
+        "@issue_type_id@": "/^\\d{1,11}$/",
+        "@invoicable@": "/^\\d{1,1}$/"
+    },
+    "@timesheet_reports": {
+        "@id@": "/^\\d{1,11}$/",
+        "@report_id@": "/^.{1,32}$/",
+        "@user_id@": "/^\\d{1,11}$/",
+        "@contract_id@": "/^\\d{1,11}$/",
+        "@tarif_id@": "/^\\d{1,11}$/",
+        "@start_date@": "",
+        "@end_date@": "",
+        "@action_datetime@": "",
+        "@mailed_datetime@": "",
+        "@signed_datetime@": "",
+        "@action_user_id@": "/^\\d{1,11}$/",
+        "@action@": "/^.{1,10}$/",
+        "@report_filename_unsigned@": "/^.{1,256}$/",
+        "@report_filename_signed@": "/^.{1,256}$/",
+        "@signed_report_active@": "/^\\d{1,1}$/",
+        "@unsigned_report_active@": "/^\\d{1,1}$/",
+        "@mailed@": "/^\\d{1,6}$/",
+        "@signed@": "/^\\d{1,6}$/",
+        "@sent_from@": "/^.{1,4000}$/",
+        "@sent_to@": "/^.{1,4000}$/",
+        "@sent_cc@": "/^.{1,4000}$/",
+        "@sent_bcc@": "/^.{1,4000}$/"
+    },
+    "@timesheet_reports_mail_settings": {
+        "@id@": "/^\\d{1,11}$/",
+        "@user_id@": "/^\\d{1,11}$/",
+        "@report_user_id@": "/^\\d{1,11}$/",
+        "@contract_id@": "/^\\d{1,11}$/",
+        "@tarif_id@": "/^\\d{1,11}$/",
+        "@mail_to@": "/^.{1,255}$/",
+        "@mail_cc@": "/^.{1,255}$/",
+        "@mail_bcc@": "/^.{1,255}$/",
+        "@mail_body@": "/^.{1,4000}$/"
+    },
+    "@user_preferences": {
+        "@id@": "/^\\d{1,11}$/",
+        "@unique_ref_id@": "/^.{1,50}$/",
+        "@user_id@": "/^\\d{1,11}$/",
+        "@pref_id@": "/^\\d{1,11}$/",
+        "@pref_value@": "/^.{1,50}$/"
+    },
+    "@public_holidays": {
+        "@id@": "/^\\d{1,11}$/",
+        "@ou_id@": "/^\\d{1,11}$/",
+        "@country_id@": "/^\\d{1,11}$/",
+        "@year@": "/^\\d{4,4}$/",
+        "@date@": "/(\\d{4,4}-\\d{2,2}-\\d{2,2})?/",
+        "@comment@": "/^.{1,255}$/"
+    },
+    "@crm_event_types": {
+        "@id@": "/^\\d{1,11}$/",
+        "@code@": "/^.{1,20}$/",
+        "@description@": "/^.{1,100}$/",
+        "@active@": "/^\\d{1,1}$/"
+    },
+    "@crm_events": {
+        "@id@": "/^\\d{1,11}$/",
+        "@crm_event_datetime@": "/^(\\d{4,4}-\\d{2,2}-\\d{2,2} \\d{2,2}:\\d{2,2}:\\d{2,2})?$/",
+        "@crm_event_datetime_created@": "/^(\\d{4,4}-\\d{2,2}-\\d{2,2} \\d{2,2}:\\d{2,2}:\\d{2,2})?$/",
+        "@crm_event_datetime_last_update@": "/^(\\d{4,4}-\\d{2,2}-\\d{2,2} \\d{2,2}:\\d{2,2}:\\d{2,2})?$/",
+        "@user_id_creation@": "/^\\d{1,11}$/",
+        "@user_id_last_update@": "/^(\\d{1,11})?$/",
+        "@ou_id@": "/^\\d{1,11}$/",
+        "@customer_id@": "/^\\d{1,11}$/",
+        "@crm_event_type_id@": "/^\\d{1,11}$/",
+        "@info@": "/^.{1,4000}$/",
+        "@required_next_action_indicator@": "/^\\d{1,1}$/",
+        "@required_next_action@": "/^.{0,4000}$/",
+        "@followup_date@": "/^(\\d{4,4}-\\d{2,2}-\\d{2,2})?$/",
+        "@followup_time@": "/^(\\d{2,2}\\:\\d{2,2}(\\:\\d{2,2})?)?$/",
+        "@active@": "/^\\d{1,1}$/",
+        "@selectedCustomers@": "/^(\\d{1,11}-)*\\d{1,11}$/",
+        "@selectedCustomersList@": "/^(\\d{1,11},)*\\d{1,11}$/",
+        "@max@": "/^\\d{1,6}$/"
+    },
+    "@customer_contacts": {
+        "@id@": "/^\\d{1,11}$/",
+        "@customer_id@": "/^\\d{1,11}$/",
+        "@first_name@": "/^.{1,100}$/",
+        "@last_name@": "/^.{1,100}$/",
+        "@email_address@": "/^.{1,255}$/",
+        "@phone_office@": "/^.{1,20}$/",
+        "@phone_mobile@": "/^.{1,20}$/",
+        "@department@": "/^.{1,50}$/",
+        "@function@": "/^.{1,255}$/",
+        "@comment@": "/^.{1,4000}$/"
+    },
+    "@skill_groups": {
+        "@id@": "/^\\d{1,11}$/",
+        "@order_number@": "/^.{1,10}$/",
+        "@parent_id@": "/^\\d{1,11}$/",
+        "@code@": "/^.{1,50}$/",
+        "@label@": "/^.{1,50}\\.text$/",
+        "@icon_cls@": "/^(fa\\-.{1,50})?$/",
+        "@active@": "/^\\d{1,1}$/"
+    },
+    "@skills": {
+        "@id@": "/^\\d{1,11}$/",
+        "@skill_group_id@": "/^\\d{1,11}$/",
+        "@order_number@": "/^\\d{1,11}$/",
+        "@code@": "/^.{1,50}$/",
+        "@label@": "/^.{1,50}\\.text$/",
+        "@active@": "/^\\d{1,1}$/"
+    },
+    "@skill_grades": {
+        "@id@": "/^\\d{1,11}$/",
+        "@order_number@": "/^\\d{1,11}$/",
+        "@code@": "/^.{1,50}$/",
+        "@label@": "/^.{1,50}$/",
+        "@value@": "/^\\d{1,11}$/",
+        "@fgcolor@": "/^.{1,7}$/",
+        "@bgcolor@": "/^.{1,7}$/",
+        "@active@": "/^\\d{1,1}$/"
+    },
+    "@skill_matrix": {
+        "@id@": "/^\\d{1,11}$/",
+        "@skill_id@": "/^\\d{1,11}$/",
+        "@user_id@": "/^\\d{1,11}$/",
+        "@grade_id@": "/^\\d{1,11}$/",
+        "@grade_value@": "/^\\d{1,11}$/",
+        "@selectedUserIds@": "/^(\\d{1,11}-)*\\d{1,11}$/",
+        "@selectedOrganisationalUnitIds@": "/^(\\d{1,11}-)*\\d{1,11}$/",
+        "@selectedUserIdsList@": "/^(\\d{1,11},)*\\d{1,11}$/",
+        "@skills_requested@": "/^.{0,4000}$/",
+        "@organisational_unit_ids@": "/^(\\d{1,11},)*\\d{1,11}$/"
+    },
+    "@skill_templates": {
+        "@id@": "/^\\d{1,11}$/",
+        "@code@": "/^.{1,255}$/",
+        "@description@": "/^.{0,4000}$/",
+        "@active@": "/^\\d{1,1}$/"
+    },
+    "@skill_templates_config": {
+        "@id@": "/^\\d{1,11}$/",
+        "@skill_template_id@": "/^\\d{1,11}$/",
+        "@order_number@": "/^\\d{1,11}$/",
+        "@skill_id@": "/^\\d{1,11}$/",
+        "@operator@": "/^.{1,2}$/",
+        "@skill_grade_id@": "/^\\d{1,11}$/"
+    },
+    "@template_types": {
+        "@id@": "/^\\d{1,11}$/",
+        "@code@": "/^.{1,20}$/",
+        "@description@": "/^.{1,100}$/",
+        "@active@": "/^\\d{1,1}$/"
+    },
+    "@templates": {
+        "@id@": "/^\\d{1,11}$/",
+        "@type@": "/^\\d{1,11}$/",
+        "@typeCode@": "/^.{1,255}$/",
+        "@common@": "/^\\d{1,1}$/",
+        "@user_id@": "/^\\d{1,11}$/",
+        "@code@": "/^.{1,255}$/",
+        "@config@": "/^.{1,4000}$/",
+        "@active@": "/^\\d{1,1}$/"
+    }
+}

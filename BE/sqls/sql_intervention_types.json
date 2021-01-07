@@ -1,0 +1,39 @@
+{
+    "select": {
+        "getAll": "
+            SELECT  C.id,
+                    C.code, 
+                    C.description, 
+                    C.active
+            FROM intervention_types as C 
+        ",
+        "checkExistenceByCode": "
+            SELECT count(*) as total 
+            FROM intervention_types 
+            WHERE code = '@intervention_types@code@'
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into intervention_types ( code,
+                                        description,
+                                        active
+            )
+            VALUES ('@intervention_types@code@', 
+                    '@intervention_types@description@', 
+                    '@intervention_types@active@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE intervention_types SET @fields@values@
+            WHERE id = '@intervention_types@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM intervention_types WHERE id = '@intervention_types@id@'
+        "
+    }
+}

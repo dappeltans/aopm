@@ -1,0 +1,42 @@
+{
+    "select": {
+        "getAll": "
+            SELECT  
+                 id,
+                 category_id,
+                 preference_name,
+                 preference_possible_values
+            FROM preferences 
+        ",
+        "checkExistenceByPreference_name": "
+            SELECT count(*) as total 
+            FROM preferences 
+            WHERE preference_name = '@preferences@preference_name@'
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into preferences ( 
+                 category_id,
+                 preference_name,
+                 preference_possible_values
+            )
+            VALUES (
+                 '@preferences@category_id@',
+                 '@preferences@preference_name@',
+                 '@preferences@preference_possible_values@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE preferences SET @fields@values@
+            WHERE id = '@preferences@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM preferences WHERE id = '@preferences@id@'
+        "
+    }
+}

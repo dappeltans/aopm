@@ -1,0 +1,45 @@
+{
+    "select": {
+        "getAll": "
+            SELECT  
+                 id,
+                 ou_id,
+                 ou_preference_name,
+                 ou_preference_value,
+                 active
+            FROM organisational_unit_preferences 
+        ",
+        "checkExistenceByOu_id": "
+            SELECT count(*) as total 
+            FROM organisational_unit_preferences 
+            WHERE ou_id = '@organisational_unit_preferences@ou_id@'
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into organisational_unit_preferences ( 
+                 ou_id,
+                 ou_preference_name,
+                 ou_preference_value,
+                 active
+            )
+            VALUES (
+                 '@organisational_unit_preferences@ou_id@',
+                 '@organisational_unit_preferences@ou_preference_name@',
+                 '@organisational_unit_preferences@ou_preference_value@',
+                 '@organisational_unit_preferences@active@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE organisational_unit_preferences SET @fields@values@
+            WHERE id = '@organisational_unit_preferences@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM organisational_unit_preferences WHERE id = '@organisational_unit_preferences@id@'
+        "
+    }
+}

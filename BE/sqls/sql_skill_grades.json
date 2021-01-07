@@ -1,0 +1,55 @@
+{
+    "select": {
+        "getAll": "
+            SELECT  
+                 id,
+                 order_number,
+                 code,
+                 label,
+                 value,
+                 fgcolor,
+                 bgcolor,
+                 active
+            FROM skill_grades 
+            ORDER BY order_number asc
+        ",
+        "checkExistenceById": "
+            SELECT count(*) as total 
+            FROM skill_grades 
+            WHERE id = '@skill_grades@id@'
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into skill_grades ( 
+                 order_number,
+                 code,
+                 label,
+                 value,
+                 fgcolor,
+                 bgcolor,
+                 active
+            )
+            VALUES (
+                 '@skill_grades@order_number@',
+                 '@skill_grades@code@',
+                 '@skill_grades@label@',
+                 '@skill_grades@value@',
+                 '@skill_grades@fgcolor@',
+                 '@skill_grades@bgcolor@',
+                 '@skill_grades@active@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE skill_grades SET @fields@values@
+            WHERE id = '@skill_grades@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM skill_grades WHERE id = '@skill_grades@id@'
+        "
+    }
+}

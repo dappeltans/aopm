@@ -1,0 +1,47 @@
+{
+    "select": {
+        "getAll": "
+            SELECT  
+                 id,
+                 code,
+                 description,
+                 active
+            FROM template_types 
+        ",
+        "checkExistenceById": "
+            SELECT count(*) as total 
+            FROM template_types 
+            WHERE id = '@template_types@id@'
+        ",
+        "getTemplateTypeIdByCode": "
+            SELECT id 
+            FROM template_types 
+            WHERE code = '@template_types@code@'
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into template_types ( 
+                 code,
+                 description,
+                 active
+            )
+            VALUES (
+                 '@template_types@code@',
+                 '@template_types@description@',
+                 '@template_types@active@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE template_types SET @fields@values@
+            WHERE id = '@template_types@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM template_types WHERE id = '@template_types@id@'
+        "
+    }
+}

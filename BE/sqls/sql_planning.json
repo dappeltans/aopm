@@ -1,0 +1,105 @@
+{
+    "select": {
+        "getAll": "
+            SELECT  
+                 id,
+                 unique_ref_id,
+                 year,
+                 month,
+                 day,
+                 intervention_date,
+                 start_time,
+                 end_time,
+                 ampm,
+                 user_id,
+                 customer_id,
+                 contract_id,
+                 tarif_id,
+                 booking_type,
+                 location,
+                 date_update,
+                 time_update,
+                 epoch_update,
+                 update_user_id,
+                 mail_sent,
+                 date_mail_sent,
+                 time_mail_sent,
+                 note,
+                 user_note,
+                 ou_id
+            FROM planning 
+        ",
+        "checkExistenceByUnique_ref_id": "
+            SELECT count(*) as total 
+            FROM planning 
+            WHERE unique_ref_id = '@planning@unique_ref_id@'
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into planning ( 
+                 unique_ref_id,
+                 year,
+                 month,
+                 day,
+                 intervention_date,
+                 start_time,
+                 end_time,
+                 ampm,
+                 user_id,
+                 customer_id,
+                 contract_id,
+                 tarif_id,
+                 booking_type,
+                 location,
+                 date_update,
+                 time_update,
+                 epoch_update,
+                 update_user_id,
+                 mail_sent,
+                 date_mail_sent,
+                 time_mail_sent,
+                 note,
+                 user_note,
+                 ou_id
+            )
+            VALUES (
+                 '@planning@unique_ref_id@',
+                 '@planning@year@',
+                 '@planning@month@',
+                 '@planning@day@',
+                 '@planning@intervention_date@',
+                 '@planning@start_time@',
+                 '@planning@end_time@',
+                 '@planning@ampm@',
+                 '@planning@user_id@',
+                 '@planning@customer_id@',
+                 '@planning@contract_id@',
+                 '@planning@tarif_id@',
+                 '@planning@booking_type@',
+                 '@planning@location@',
+                 '@planning@date_update@',
+                 '@planning@time_update@',
+                 '@planning@epoch_update@',
+                 '@planning@update_user_id@',
+                 '@planning@mail_sent@',
+                 '@planning@date_mail_sent@',
+                 '@planning@time_mail_sent@',
+                 '@planning@note@',
+                 '@planning@user_note@',
+                 '@planning@ou_id@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE planning SET @fields@values@
+            WHERE id = '@planning@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM planning WHERE id = '@planning@id@'
+        "
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "select": {
+        "getByReferenceId": "
+                            SELECT  A.id,
+                                    A.eventdate, 
+                                    A.eventtime, 
+                                    A.eventdatetime,
+                                    A.eventtimestamp,
+                                    A.action_user_id,
+                                    A.action_type,
+                                    A.action_description,
+                                    A.action_method,
+                                    A.from_value,
+                                    A.to_value,
+                                    A.reference_id,
+                                    A.object_type,
+                                    U.first_name,
+                                    U.last_name
+                            FROM audit as A 
+                                LEFT JOIN users U on A.action_user_id = U.id 
+                            WHERE A.reference_id = '@audit@referenceId@'
+                            "
+    },
+    "insert": {
+
+    },
+    "update": {
+
+    },
+    "delete": {
+        
+    }
+}

@@ -1,0 +1,40 @@
+{
+    "select": {
+        "getTenantIdByName":"
+            SELECT  
+                id
+            FROM tenants
+            WHERE name = '@tenants@name@' 
+        ",
+        "getAll": "
+            SELECT  
+                 id,
+                 active,
+                 name
+            FROM tenants 
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into tenants ( 
+                 active,
+                 name
+            )
+            VALUES (
+                 '@tenants@active@',
+                 '@tenants@name@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE tenants SET @fields@values@
+            WHERE id = '@tenants@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM tenants WHERE id = '@tenants@id@'
+        "
+    }
+}

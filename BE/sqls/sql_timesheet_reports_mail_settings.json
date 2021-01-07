@@ -1,0 +1,57 @@
+{
+    "select": {
+        "getAll": "
+            SELECT  
+                 id,
+                 user_id,
+                 report_user_id,
+                 contract_id,
+                 tarif_id,
+                 mail_to,
+                 mail_cc,
+                 mail_bcc,
+                 mail_body
+            FROM timesheet_reports_mail_settings 
+        ",
+        "checkExistenceById": "
+            SELECT count(*) as total 
+            FROM timesheet_reports_mail_settings 
+            WHERE id = '@timesheet_reports_mail_settings@id@'
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into timesheet_reports_mail_settings ( 
+                 user_id,
+                 report_user_id,
+                 contract_id,
+                 tarif_id,
+                 mail_to,
+                 mail_cc,
+                 mail_bcc,
+                 mail_body
+            )
+            VALUES (
+                 '@timesheet_reports_mail_settings@user_id@',
+                 '@timesheet_reports_mail_settings@report_user_id@',
+                 '@timesheet_reports_mail_settings@contract_id@',
+                 '@timesheet_reports_mail_settings@tarif_id@',
+                 '@timesheet_reports_mail_settings@mail_to@',
+                 '@timesheet_reports_mail_settings@mail_cc@',
+                 '@timesheet_reports_mail_settings@mail_bcc@',
+                 '@timesheet_reports_mail_settings@mail_body@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE timesheet_reports_mail_settings SET @fields@values@
+            WHERE id = '@timesheet_reports_mail_settings@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM timesheet_reports_mail_settings WHERE id = '@timesheet_reports_mail_settings@id@'
+        "
+    }
+}

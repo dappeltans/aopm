@@ -1,0 +1,63 @@
+{
+    "select": {
+        "getAll": "
+            SELECT  
+                 id,
+                 unique_ref_id,
+                 report_id,
+                 field_name,
+                 display_name,
+                 width_in_pixels,
+                 width_in_excel,
+                 alignment,
+                 order,
+                 selectable,
+                 to_display
+            FROM report_fields 
+        ",
+        "checkExistenceByUnique_ref_id": "
+            SELECT count(*) as total 
+            FROM report_fields 
+            WHERE unique_ref_id = '@report_fields@unique_ref_id@'
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into report_fields ( 
+                 unique_ref_id,
+                 report_id,
+                 field_name,
+                 display_name,
+                 width_in_pixels,
+                 width_in_excel,
+                 alignment,
+                 order,
+                 selectable,
+                 to_display
+            )
+            VALUES (
+                 '@report_fields@unique_ref_id@',
+                 '@report_fields@report_id@',
+                 '@report_fields@field_name@',
+                 '@report_fields@display_name@',
+                 '@report_fields@width_in_pixels@',
+                 '@report_fields@width_in_excel@',
+                 '@report_fields@alignment@',
+                 '@report_fields@order@',
+                 '@report_fields@selectable@',
+                 '@report_fields@to_display@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE report_fields SET @fields@values@
+            WHERE id = '@report_fields@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM report_fields WHERE id = '@report_fields@id@'
+        "
+    }
+}

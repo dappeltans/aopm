@@ -1,0 +1,39 @@
+{
+    "select": {
+        "getAll": "
+            SELECT  C.id,
+                    C.code, 
+                    C.description, 
+                    C.active
+            FROM currencies as C 
+        ",
+        "checkExistenceByCode": "
+            SELECT count(*) as total 
+            FROM currencies 
+            WHERE code = '@currencies@code@'
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into currencies ( code,
+                                        description,
+                                        active
+            )
+            VALUES ('@currencies@code@', 
+                    '@currencies@description@', 
+                    '@currencies@active@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE currencies SET @fields@values@
+            WHERE id = '@currencies@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM currencies WHERE id = '@currencies@id@'
+        "
+    }
+}

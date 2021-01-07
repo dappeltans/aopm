@@ -1,0 +1,126 @@
+{
+    "select": {
+        "getAllOffsetLimit": "
+            SELECT  
+                 id,
+                 country_id,
+                 city,
+                 name,
+                 code,
+                 address_line_1,
+                 address_line_2,
+                 address_line_3,
+                 address_line_4,
+                 contact_person_name,
+                 contact_person_email,
+                 contact_person_phone,
+                 active,
+                 is_leaf,
+                 parent_id,
+                 level,
+                 reference
+            FROM organisational_units 
+            ORDER BY id 
+            LIMIT @pagination@limit@ OFFSET @pagination@offset@
+        ",
+        "getAll": "
+            SELECT  
+                 id,
+                 country_id,
+                 city,
+                 name,
+                 code,
+                 address_line_1,
+                 address_line_2,
+                 address_line_3,
+                 address_line_4,
+                 contact_person_name,
+                 contact_person_email,
+                 contact_person_phone,
+                 active,
+                 is_leaf,
+                 parent_id,
+                 level,
+                 reference
+            FROM organisational_units 
+        ",
+        "getById": "
+            SELECT  
+                 id,
+                 country_id,
+                 city,
+                 name,
+                 code,
+                 address_line_1,
+                 address_line_2,
+                 address_line_3,
+                 address_line_4,
+                 contact_person_name,
+                 contact_person_email,
+                 contact_person_phone,
+                 active,
+                 is_leaf,
+                 parent_id,
+                 level,
+                 reference
+            FROM organisational_units 
+            WHERE id = '@organisational_units@id@'
+        ",
+        "checkExistenceByUniqueReference": "
+            SELECT count(*) as total 
+            FROM organisational_units 
+            WHERE name = '@organisational_units@name@'
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into organisational_units ( 
+                 country_id,
+                 city,
+                 name,
+                 code,
+                 address_line_1,
+                 address_line_2,
+                 address_line_3,
+                 address_line_4,
+                 contact_person_name,
+                 contact_person_email,
+                 contact_person_phone,
+                 active,
+                 is_leaf,
+                 parent_id,
+                 level,
+                 reference
+            )
+            VALUES (
+                 '@organisational_units@country_id@',
+                 '@organisational_units@city@',
+                 '@organisational_units@name@',
+                 '@organisational_units@code@',
+                 '@organisational_units@address_line_1@',
+                 '@organisational_units@address_line_2@',
+                 '@organisational_units@address_line_3@',
+                 '@organisational_units@address_line_4@',
+                 '@organisational_units@contact_person_name@',
+                 '@organisational_units@contact_person_email@',
+                 '@organisational_units@contact_person_phone@',
+                 '@organisational_units@active@',
+                 '@organisational_units@is_leaf@',
+                 '@organisational_units@parent_id@',
+                 '@organisational_units@level@',
+                 '@organisational_units@reference@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE organisational_units SET @fields@values@
+            WHERE id = '@organisational_units@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM organisational_units WHERE id = '@organisational_units@id@'
+        "
+    }
+}

@@ -1,0 +1,39 @@
+{
+    "select": {
+        "getAll": "
+            SELECT  C.id,
+                    C.code, 
+                    C.description, 
+                    C.active
+            FROM issue_types as C 
+        ",
+        "checkExistenceByCode": "
+            SELECT count(*) as total 
+            FROM issue_types 
+            WHERE code = '@issue_types@code@'
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into issue_types (   code,
+                                        description,
+                                        active
+            )
+            VALUES ('@issue_types@code@', 
+                    '@issue_types@description@', 
+                    '@issue_types@active@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE issue_types SET @fields@values@
+            WHERE id = '@issue_types@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM issue_types WHERE id = '@issue_types@id@'
+        "
+    }
+}

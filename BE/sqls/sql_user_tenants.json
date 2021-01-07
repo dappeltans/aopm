@@ -1,0 +1,32 @@
+{
+    "select": {
+        "getAllByAuthUserId": "
+            SELECT count(*) as total
+            FROM user_tenants
+            WHERE user_id = '@user_tenants@user_id@' 
+        "
+    },
+    "insert": {
+        "createNewCombinationUserIdTenantId":"
+            INSERT into user_tenants ( 
+                user_id,
+                tenant_id
+            )
+            VALUES (
+                '@user_tenants@user_id@',
+                '@user_tenants@tenant_id@'
+            )    
+        "
+    },
+    "update": {
+
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM user_tenants WHERE id = '@user_tenants@id@'
+        ",
+        "deleteByUserIdTenantId": "
+            DELETE FROM user_tenants WHERE user_id = '@user_tenants@user_id@' and tenant_id = '@user_tenants@tenant_id@'
+        "
+    }
+} 

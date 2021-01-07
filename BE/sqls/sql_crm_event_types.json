@@ -1,0 +1,45 @@
+{
+    "select": {
+        "getAll": "
+            SELECT  
+                 id,
+                 code,
+                 description,
+                 icon,
+                 active
+            FROM crm_event_types 
+        ",
+        "checkExistenceById": "
+            SELECT count(*) as total 
+            FROM crm_event_types 
+            WHERE id = '@crm_event_types@id@'
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into crm_event_types ( 
+                 code,
+                 description,
+                 icon,
+                 active
+            )
+            VALUES (
+                 '@crm_event_types@code@',
+                 '@crm_event_types@description@',
+                 '@crm_event_types@icon@',
+                 '@crm_event_types@active@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE crm_event_types SET @fields@values@
+            WHERE id = '@crm_event_types@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM crm_event_types WHERE id = '@crm_event_types@id@'
+        "
+    }
+}

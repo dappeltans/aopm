@@ -1,0 +1,52 @@
+{
+    "select": {
+        "getAllOffsetLimit": "
+            SELECT  
+                 id,
+                 code,
+                 description,
+                 active
+            FROM user_types 
+            ORDER BY id 
+            LIMIT @pagination@limit@ OFFSET @pagination@offset@
+        ",
+        "getAll": "
+            SELECT  
+                 id,
+                 code,
+                 description,
+                 active
+            FROM user_types 
+        ",
+        "checkExistenceByCode": "
+            SELECT count(*) as total 
+            FROM user_types 
+            WHERE code = '@user_types@code@'
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into user_types ( 
+                 code,
+                 description,
+                 active
+            )
+            VALUES (
+                 '@user_types@code@',
+                 '@user_types@description@',
+                 '@user_types@active@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE user_types SET @fields@values@
+            WHERE id = '@user_types@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM user_types WHERE id = '@user_types@id@'
+        "
+    }
+}

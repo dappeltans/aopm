@@ -1,0 +1,66 @@
+{
+    "select": {
+        "getAllOffsetLimit": "
+            SELECT  
+                 id,
+                 unique_ref_id,
+                 profile_id,
+                 menu_item_rights_id,
+                 allowed
+            FROM profile_menu_item_rights 
+            ORDER BY id 
+            LIMIT @pagination@limit@ OFFSET @pagination@offset@
+        ",
+        "getAll": "
+            SELECT  
+                 id,
+                 unique_ref_id,
+                 profile_id,
+                 menu_item_rights_id,
+                 allowed
+            FROM profile_menu_item_rights 
+        ",
+        "getById": "
+            SELECT  
+                 id,
+                 unique_ref_id,
+                 profile_id,
+                 menu_item_rights_id,
+                 allowed
+            FROM profile_menu_item_rights 
+            WHERE id = '@profile_menu_item_rights@id@'
+        ",
+        "checkExistenceByUniqueReference": "
+            SELECT count(*) as total 
+            FROM profile_menu_item_rights 
+            WHERE unique_ref_id = '@profile_menu_item_rights@unique_ref_id@'
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into profile_menu_item_rights ( 
+                 unique_ref_id,
+                 profile_id,
+                 menu_item_rights_id,
+                 allowed
+            )
+            VALUES (
+                 '@profile_menu_item_rights@unique_ref_id@',
+                 '@profile_menu_item_rights@profile_id@',
+                 '@profile_menu_item_rights@menu_item_rights_id@',
+                 '@profile_menu_item_rights@allowed@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE profile_menu_item_rights SET @fields@values@
+            WHERE id = '@profile_menu_item_rights@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM profile_menu_item_rights WHERE id = '@profile_menu_item_rights@id@'
+        "
+    }
+}

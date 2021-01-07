@@ -1,0 +1,51 @@
+{
+    "select": {
+        "getAll": "
+            SELECT  
+                 id,
+                 skill_template_id,
+                 order_number,
+                 skill_id,
+                 operator,
+                 skill_grade_id,
+                 active
+            FROM skill_templates_config 
+        ",
+        "checkExistenceById": "
+            SELECT count(*) as total 
+            FROM skill_templates_config 
+            WHERE id = '@skill_templates_config@id@'
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into skill_templates_config ( 
+                 skill_template_id,
+                 order_number,
+                 skill_id,
+                 operator,
+                 skill_grade_id,
+                 active
+            )
+            VALUES (
+                 '@skill_templates_config@skill_template_id@',
+                 '@skill_templates_config@order_number@',
+                 '@skill_templates_config@skill_id@',
+                 '@skill_templates_config@operator@',
+                 '@skill_templates_config@skill_grade_id@',
+                 '@skill_templates_config@active@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE skill_templates_config SET @fields@values@
+            WHERE id = '@skill_templates_config@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM skill_templates_config WHERE id = '@skill_templates_config@id@'
+        "
+    }
+}

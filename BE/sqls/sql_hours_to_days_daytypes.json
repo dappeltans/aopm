@@ -1,0 +1,36 @@
+{
+    "select": {
+        "getAll": "
+            SELECT  
+                 id,
+                 name
+            FROM hours_to_days_daytypes 
+        ",
+        "checkExistenceByName": "
+            SELECT count(*) as total 
+            FROM hours_to_days_daytypes 
+            WHERE name = '@hours_to_days_daytypes@name@'
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into hours_to_days_daytypes ( 
+                 name
+            )
+            VALUES (
+                 '@hours_to_days_daytypes@name@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE hours_to_days_daytypes SET @fields@values@
+            WHERE id = '@hours_to_days_daytypes@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM hours_to_days_daytypes WHERE id = '@hours_to_days_daytypes@id@'
+        "
+    }
+}

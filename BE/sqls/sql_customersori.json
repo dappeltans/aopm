@@ -1,0 +1,99 @@
+{
+    "select": {
+        "getAll": "
+                SELECT  C.id,
+                        C.name, 
+                        C.code, 
+                        C.fgcolor,
+                        C.bgcolor,
+                        C.logo,
+                        C.ou_id,
+                        O.name as ou_name,
+                        O.code as ou_code,
+                        C.active
+                FROM customers as C 
+                     LEFT JOIN organisational_units O on C.ou_id = O.id
+        ",
+        "getById": "
+                SELECT  C.id,
+                        C.name, 
+                        C.code, 
+                        C.fgcolor,
+                        C.bgcolor,
+                        C.logo,
+                        C.ou_id,
+                        O.name as ou_name,
+                        O.code as ou_code,
+                        C.active
+                FROM customers as C 
+                     LEFT JOIN organisational_units O on C.ou_id = O.id
+                WHERE C.id = '@customers@id@'
+        ",
+        "checkExistenceByCode": "
+                SELECT count(*) as total 
+                FROM customers 
+                WHERE code = '@customers@code@'
+        ",
+        "getAllByOuId": "
+                SELECT  C.id,
+                        C.name, 
+                        C.code, 
+                        C.fgcolor,
+                        C.bgcolor,
+                        C.logo,
+                        C.ou_id,
+                        O.name as ou_name,
+                        O.code as ou_code,
+                        C.active
+                FROM customers as C 
+                     LEFT JOIN organisational_units O on C.ou_id = O.id
+                WHERE C.ou_id = '@customers@ou_id@'
+        ",
+        "checkExistenceByCode": "
+                SELECT count(*) as total 
+                FROM customers 
+                WHERE code = '@customers@code@'
+        "
+    },
+    
+    "insert": {
+        "createNew":  "
+                                INSERT INTO customers ( 
+                                    name, 
+                                    code,
+                                    fgcolor,
+                                    bgcolor,
+                                    logo,
+                                    ou_id, 
+                                    active
+                                ) 
+                                VALUES (
+                                    '@customers@name@', 
+                                    '@customers@code@', 
+                                    '@customers@fgcolor@', 
+                                    '@customers@bgcolor@',
+                                    '@customers@logo@',
+                                    '@customers@ou_id@',
+                                    '@customers@active@'
+                                )
+        "
+    },
+    
+    "update": {
+        "updateById" : "
+                UPDATE customers SET @fields@values@
+                WHERE id = '@customers@id@'
+                
+        ",
+        "updateCustomerLogoById" : "
+                UPDATE customers SET logo = '@customers@logo@' 
+                WHERE id = '@customers@id@'
+        "
+    },
+    
+    "delete": {
+        "deleteById": "
+                            DELETE FROM customers WHERE id = '@customers@id@'
+        "
+    }
+}

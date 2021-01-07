@@ -1,0 +1,279 @@
+{
+    "select": {
+        "getUserIdByEmail": "
+            SELECT  id
+            FROM users 
+            WHERE email_address = '@users@email_address@' and active = 1
+        ",
+        "getUserAuthTenantsByEmailAddress": "
+            SELECT U.email_address as email_address, U.id as user_id, T.name as tenant FROM `users` U 
+            JOIN user_tenants UT ON U.id = UT.user_id 
+            JOIN tenants T ON UT.tenant_id = T.id
+            WHERE U.active = 1 and U.email_address = '@users@email_address@'
+        ",
+        "checkCombiUserTenantAuthByUserEmailAddress": "
+            SELECT U.email_address as email_address, U.id as user_id, T.name as tenant FROM `users` U 
+            JOIN user_tenants UT ON U.id = UT.user_id 
+            JOIN tenants T ON UT.tenant_id = T.id
+            WHERE U.active = 1 and U.email_address = '@users@email_address@' and T.name = '@tenants@tenant_name@'
+        ",
+        "getAllAuthUsersOffsetLimit": "
+            SELECT  
+                 id,
+                 email_address,
+                 password,
+                 active
+            FROM users 
+            ORDER BY id 
+            LIMIT @pagination@limit@ OFFSET @pagination@offset@
+        ",
+        "getAllAuthUsers": "
+            SELECT  
+                 id,
+                 email_address,
+                 password,
+                 active
+            FROM users 
+        ",
+        "checkAuthUserExistenceByEmailAddress": "
+            SELECT id 
+            FROM users 
+            WHERE email_address = '@users@email_address@'
+        ",
+
+
+        "getAllOffsetLimit": "
+            SELECT  
+                 id,
+                 active,
+                 first_name,
+                 last_name,
+                 email_address,
+                 date_of_birth,
+                 date_of_hire,
+                 phone_office,
+                 phone_mobile,
+                 creation_datetime,
+                 picture,
+                 profile_id,
+                 user_type_id,
+                 language_id,
+                 last_modified_datetime,
+                 ou_id,
+                 display_in_planning,
+                 display_in_skills
+            FROM users 
+            ORDER BY id 
+            LIMIT @pagination@limit@ OFFSET @pagination@offset@
+        ",
+        "getById": "
+            SELECT  
+                id,
+                active,
+                first_name,
+                last_name,
+                email_address,
+                date_of_birth,
+                date_of_hire,
+                phone_office,
+                phone_mobile,
+                creation_datetime,
+                picture,
+                profile_id,
+                user_type_id,
+                language_id,
+                last_modified_datetime,
+                ou_id,
+                display_in_planning,
+                display_in_skills
+            FROM users 
+            WHERE id = '@users@id@'
+        ",
+        "getByEmailAddress":"
+            SELECT  
+                id,
+                active,
+                first_name,
+                last_name,
+                email_address,
+                date_of_birth,
+                date_of_hire,
+                phone_office,
+                phone_mobile,
+                creation_datetime,
+                picture,
+                profile_id,
+                user_type_id,
+                language_id,
+                last_modified_datetime,
+                ou_id,
+                display_in_planning,
+                display_in_skills
+            FROM users 
+            WHERE email_address = '@users@email_address@'
+        ",
+        "getAll": "
+            SELECT  
+                 id,
+                 active,
+                 first_name,
+                 last_name,
+                 email_address,
+                 date_of_birth,
+                 date_of_hire,
+                 phone_office,
+                 phone_mobile,
+                 creation_datetime,
+                 picture,
+                 profile_id,
+                 user_type_id,
+                 language_id,
+                 last_modified_datetime,
+                 ou_id,
+                 display_in_planning,
+                 display_in_skills
+            FROM users 
+        ",
+        "checkExistenceByEmailAddress": "
+            SELECT count(*) as total 
+            FROM users 
+            WHERE email_address = '@users@email_address@'
+        ",
+        "getUserIdByEmailAddress": "
+            SELECT id 
+            FROM users 
+            WHERE email_address = '@users@email_address@'
+        ",
+        "getUserMenuItemRights": "
+            SELECT PMIR.menu_item_rights_id, MIR.variable_name
+            FROM profile_menu_item_rights PMIR, menu_item_rights MIR
+            WHERE MIR.active = 1
+                and PMIR.menu_item_rights_id = MIR.id
+                and PMIR.allowed = 1
+                and PMIR.profile_id = (
+                    select U.profile_id from users U where U.email_address = '@users@email_address@'    
+                )
+        ",
+        "getUserMenuRights": "
+            SELECT PMR.menu_id, M.menu_item_number, M.parent_id, M.menu_level, M.label, M.is_leaf, M.icon_cls, M.handler, M.active
+            FROM profile_menu_rights PMR, menu M
+            WHERE M.active = 1
+                and PMR.menu_id = M.id
+                and PMR.allowed = 1
+                and PMR.profile_id = (
+                    select U.profile_id from users U where U.email_address = '@users@email_address@'    
+                )
+            ORDER BY M.menu_item_number asc
+        ",
+        "getMenuItems": "
+                        SELECT id, menu_item_id, menu_item_right_label, variable_name, active
+                        FROM menu_item_rights
+        ",
+        "getMenus": "
+                        SELECT id, menu_item_number, parent_id, menu_level, label, is_leaf, icon_cls, handler, active
+                        FROM menu
+                        ORDER BY menu_item_number asc
+        ",
+        "getProfileRightsOptions": "
+                        SELECT T.id, T.menu_item_number, T.label, T.is_leaf, T.icon_cls, T.active, T.item_type FROM
+                        (
+                            SELECT M.id as id, M.menu_item_number as menu_item_number, M.label as label, M.is_leaf as is_leaf, M.icon_cls as icon_cls, 'MI' as item_type, M.active as active
+                                FROM menu M
+                            UNION (
+                                SELECT R.id as id, R.menu_item_number as menu_item_number, R.menu_item_right_label as label, '1' as is_leaf, '' as icon_cls, 'MIR' as item_type ,R.active as active FROM (
+                                    SELECT M.id as id, M.menu_item_number, M.label, M.is_leaf, M.icon_cls, M.active, MIR.menu_item_right_label from menu M 
+                                    LEFT JOIN menu_item_rights MIR on M.id = MIR.menu_item_id
+                                ) as R 
+                                WHERE R.menu_item_right_label is not null
+                            )
+                        ) T
+                        ORDER BY T.menu_item_number asc, T.item_type asc
+        "
+    },
+    "insert": {
+        "createNewCombinationUserIdTenantId":"
+            INSERT into user_tenants ( 
+                user_id,
+                tenant_id
+            )
+            VALUES (
+                '@user_tenants@user_id@',
+                '@user_tenants@tenant_id@'
+            )    
+        ",
+        "createNewAuthUser": "
+            INSERT into users ( 
+                email_address,
+                password,
+                active
+            )
+            VALUES (
+                '@users@email_address@',
+                '@users@password@',
+                '@users@active@'
+            )
+        ",
+        "createNew": "
+            INSERT into users ( 
+                 active,
+                 first_name,
+                 last_name,
+                 email_address,
+                 date_of_birth,
+                 date_of_hire,
+                 phone_office,
+                 phone_mobile,
+                 creation_datetime,
+                 picture,
+                 profile_id,
+                 user_type_id,
+                 language_id,
+                 last_modified_datetime,
+                 ou_id,
+                 display_in_planning,
+                 display_in_skills
+            )
+            VALUES (
+                 '@users@active@',
+                 '@users@first_name@',
+                 '@users@last_name@',
+                 '@users@email_address@',
+                 '@users@date_of_birth@',
+                 '@users@date_of_hire@',
+                 '@users@phone_office@',
+                 '@users@phone_mobile@',
+                 '@users@creation_datetime@',
+                 '@users@picture@',
+                 '@users@profile_id@',
+                 '@users@user_type_id@',
+                 '@users@language_id@',
+                 '@users@last_modified_datetime@',
+                 '@users@ou_id@',
+                 '@users@display_in_planning@',
+                 '@users@display_in_skills@'
+            )
+        "
+    },
+    "update": {
+        "updateAuthUserById": "
+            UPDATE users SET @fields@values@
+            WHERE id = '@users@id@'
+        ",
+        "updateById": "
+            UPDATE users SET @fields@values@
+            WHERE id = '@users@id@'
+         ",
+         "updatePasswordByEmailAddress":"
+            UPDATE users SET password = '@users@password@'
+            WHERE email_address = '@users@email_address@'
+         "
+    },
+    "delete": {
+        "deleteAuthUserById": "
+            DELETE FROM users WHERE id = '@users@id@'
+        ",
+        "deleteById": "
+            DELETE FROM users WHERE id = '@users@id@'
+        "
+    }
+}

@@ -1,0 +1,65 @@
+{
+    "select": {
+        "getAll": "
+            SELECT  
+                P.id,
+                P.country_id,
+                C.code as country_code,
+                C.description as country_description,
+                P.year,
+                DATE_FORMAT(P.date, '%Y-%m-%d') as date,
+                P.comment
+            FROM public_holidays P
+                LEFT JOIN countries C on C.id = P.country_id
+            WHERE C.id = '@public_holidays@id@'
+        ",
+        "getAllByOuId": "
+            SELECT  
+                P.id,
+                P.country_id,
+                C.code as country_code,
+                C.description as country_description,
+                P.year,
+                DATE_FORMAT(P.date, '%Y-%m-%d') as date,
+                P.comment
+            FROM public_holidays P
+                LEFT JOIN countries C on C.id = P.country_id
+                LEFT JOIN organisational_units O on O.country_id = C.id
+            WHERE O.id = '@public_holidays@ou_id@'
+        ",
+        "checkExistenceByCountryIdYearDate": "
+            SELECT count(*) as total 
+            FROM public_holidays 
+            WHERE country_id = '@public_holidays@country_id@' and
+                  year = '@public_holidays@year@' and
+                  date = '@public_holidays@date@'
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into public_holidays ( 
+                 country_id,
+                 year,
+                 date,
+                 comment
+            )
+            VALUES (
+                 '@public_holidays@country_id@',
+                 '@public_holidays@year@',
+                 '@public_holidays@date@',
+                 '@public_holidays@comment@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE public_holidays SET @fields@values@
+            WHERE id = '@public_holidays@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM public_holidays WHERE id = '@public_holidays@id@'
+        "
+    }
+}

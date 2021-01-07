@@ -1,0 +1,723 @@
+{
+    "errorMessages": {
+        "_code_generator": {
+            "codeError.txt": "Error encountered trying to create the CRUD code."
+        },
+        "server": {
+            "serverError.txt": "An unknown error occurred"
+        },
+        "database": {
+            "databaseError.txt": "Error encountered trying to connect to the database.",
+            "authDatabaseError.txt": "Error encountered trying to connect to the auth database",
+            "bcryptEncryptError.txt": "Error trying to encrypt string using bcrypt module.",
+            "createQueryError.txt": "An error was encountered while trying to create the sql query.",
+            "describeTableQueryError.txt": "An error was encountered while tryinig to execute describe table query."
+        },
+        "input_validations": {
+            "getError.txt": "An error occurred while trying to retrieve the input validations info."
+        },
+        "language": {
+            "lookupError.txt": "lookup error in global.language."
+        },
+        "file": {
+            "fileUploadError.txt": "An error occurred while processing the upload file"
+        },
+        "general": {
+            "updateTableSyntaxError.txt": "An error was encountered in the table update syntax."
+        },
+        "login": {
+            "authenticationFailed.txt": "User authentication failed.",
+            "authorizationFailed.txt": "User authorization failed.",
+            "getUserIdByEmail.txt": "Could not execute query getUserIdByEmail by using received email address in header.",
+            "createSqlError.txt": "Could not create SQL login query.",
+            "checkExistenceByUserIdAndTenant.txt": "Could not retrieve uniquely the combination user_id and tenant_name from auth database.",
+            "checkExistenceByEmail.txt": "Could nt check user email address from auth database",
+            "getTenantsByEmail.txt": "Could not retrieve tenants via user email address from auth database"
+        },
+        "inputFieldValidation": {
+            "inputFieldValidationError.txt": "A non compliant field value was received.",
+            "noFileReceivedError.txt": "No file was uploaded.",
+            "noFileProvidedError.txt": "No file provided in url.",
+            "unauthorizedFileAccess.txt": "Unauthorized file access request.",
+            "fileNotFound.txt": "File to download not found.",
+            "unrecognizedField.txt": "An unrecognized field was received"
+        },
+        "auth": {
+            "authenticationError.txt": "User not authenticated.",
+            "authorizationError.txt": "Not authorized"
+        },
+        "audit": {
+            "getError.txt": "Error retrieving audit records."
+        },
+        "contracts": {
+            "alreadyExists.txt": "A contract with the given code already exists. Please use another code.",
+            "getError.txt": "An error occurred while trying to retrieve the contracts.",
+            "createError.txt": "An error occurred while trying to create a new contract.",
+            "updateError.txt": "An error occurred while trying to update the contract.",
+            "deleteError.txt": "An error occurred while trying to delete the contract."
+        },
+        "contract_invoice_base": {
+            "alreadyExists.txt": "A contract invoice base with the given code already exists. Please use another code.",
+            "getError.txt": "An error occurred while trying to retrieve the contract invoice base.",
+            "createError.txt": "An error occurred while trying to create a new contract invoice base.",
+            "updateError.txt": "An error occurred while trying to update the contract invoice base.",
+            "deleteError.txt": "An error occurred while trying to delete the contract invoice base."
+        },
+        "contract_mode": {
+            "alreadyExists.txt": "A contract mode with the given code already exists. Please use another code.",
+            "getError.txt": "An error occurred while trying to retrieve the contract mode.",
+            "createError.txt": "An error occurred while trying to create a new contract mode.",
+            "updateError.txt": "An error occurred while trying to update the contract mode.",
+            "deleteError.txt": "An error occurred while trying to delete the contract mode."
+        },
+        "contract_roles": {
+            "alreadyExists.txt": "A contract role with the given code already exists. Please use another code.",
+            "getError.txt": "An error occurred while trying to retrieve the contract roles.",
+            "createError.txt": "An error occurred while trying to create a new contract role.",
+            "updateError.txt": "An error occurred while trying to update the contract role.",
+            "deleteError.txt": "An error occurred while trying to delete the contract role."
+        },
+        "currencies": {
+            "alreadyExists.txt": "A currency with the given code already exists. Please use another code.",
+            "getError.txt": "An error occurred while trying to retrieve the currencies.",
+            "createError.txt": "An error occurred while trying to create a new currency.",
+            "updateError.txt": "An error occurred while trying to update the currency.",
+            "deleteError.txt": "An error occurred while trying to delete the currency."
+        },
+        "languages": {
+            "alreadyExists.txt": "A languages with the given code already exists. Please use another code.",
+            "getError.txt": "An error occurred while trying to retrieve the items in languages.",
+            "getByIdError.txt": "An error occurred while trying to retrieve the item in languages by using the provided item's id.",
+            "createError.txt": "An error occurred while trying to create a new item in languages.",
+            "updateByIdError.txt": "An error occurred while trying to update the item in languages by using the provided item's id.",
+            "deleteByIdError.txt": "An error occurred while trying to delete the item in languages by using the provided item's id."
+        },
+        "intervention_types": {
+            "alreadyExists.txt": "An intervention type with the given code already exists. Please use another code.",
+            "getError.txt": "An error occurred while trying to retrieve the intervention types.",
+            "createError.txt": "An error occurred while trying to create a new intervention type.",
+            "updateError.txt": "An error occurred while trying to update the intervention type.",
+            "deleteError.txt": "An error occurred while trying to delete the intervention type."
+        },
+        "issue_types": {
+            "alreadyExists.txt": "An issue type with the given code already exists. Please use another code.",
+            "getError.txt": "An error occurred while trying to retrieve the issue types.",
+            "createError.txt": "An error occurred while trying to create a new issue type.",
+            "updateError.txt": "An error occurred while trying to update the issue type.",
+            "deleteError.txt": "An error occurred while trying to delete the issue type."
+        },
+        "users": {
+            "alreadyExists.txt": "A user with the given email address already exists. Please use another email address.",
+            "getError.txt": "An error occurred while trying to retrieve the users info.",
+            "createError.txt": "An error occurred while trying to create a new user.",
+            "updateError.txt": "An error occurred while trying to update the user.",
+            "deleteError.txt": "An error occurred while trying to delete the user.",
+            "checkAuthUserExistenceByEmailAddress.txt": "An error occurred while trying to execute checkAuthUserExistenceByEmailAddress.",
+            "checkCombiUserTenantAuthByUserEmailAddress.txt": "An error occurred while trying to execute checkCombiUserTenantAuthByUserEmailAddress.",
+            "checkExistenceByEmailAddress.txt": "An error occurred while trying to execute checkExistenceByEmail_address.",
+            "emailAddressAlreadyExistsForTenant.txt": "A user with this email address already exists for the given tenant.",
+            "unknownTenant.txt": "An unnknown tenant was received.",
+            "getTenantIdByName.txt": "An error occurred while trying to get the tenant id based on tenant name provided.",
+            "checkExistenceByEmailAddressAndTenant.txt": "An error occurred while trying to execute checkExistenceByEmailAddressAndTenant."
+        },
+        "user_types": {
+            "alreadyExists.txt": "A user_types with the given code already exists. Please use another code.",
+            "getError.txt": "An error occurred while trying to retrieve the items in user_types.",
+            "getByIdError.txt": "An error occurred while trying to retrieve the item in user_types by using the provided item's id.",
+            "createError.txt": "An error occurred while trying to create a new item in user_types.",
+            "updateByIdError.txt": "An error occurred while trying to update the item in user_types by using the provided item's id.",
+            "deleteByIdError.txt": "An error occurred while trying to delete the item in user_types by using the provided item's id."
+        },
+        "user_tenants": {
+            "alreadyExists.txt": "A combination user tenant already exists. Please use another combination.",
+            "getError.txt": "An error occurred while trying to retrieve the user tenants info.",
+            "createError.txt": "An error occurred while trying to create a new user tenant combination.",
+            "updateError.txt": "An error occurred while trying to update the user tenant combination.",
+            "deleteError.txt": "An error occurred while trying to delete the user tenant combination."
+        },
+        "preferences_categories": {
+            "alreadyExists.txt": "A preferences categorie with the given code already exists. Please use another code.",
+            "getError.txt": "An error occurred while trying to retrieve the preferences categories info.",
+            "createError.txt": "An error occurred while trying to create a new preferences categorie.",
+            "updateError.txt": "An error occurred while trying to update the preferences categorie.",
+            "deleteError.txt": "An error occurred while trying to delete the preferences categorie."
+        },
+        "profiles": {
+            "alreadyExists.txt": "A profile with the given id already exists. Please use another id.",
+            "getError.txt": "An error occurred while trying to retrieve the profiles info.",
+            "createError.txt": "An error occurred while trying to create a new profile.",
+            "updateError.txt": "An error occurred while trying to update the profile.",
+            "deleteError.txt": "An error occurred while trying to delete the profile."
+        },
+        "reports": {
+            "alreadyExists.txt": "A report with the given code already exists. Please use another code.",
+            "getError.txt": "An error occurred while trying to retrieve the reports info.",
+            "createError.txt": "An error occurred while trying to create a new report.",
+            "updateError.txt": "An error occurred while trying to update the report.",
+            "deleteError.txt": "An error occurred while trying to delete the report."
+        },
+        "skill_groups": {
+            "alreadyExists.txt": "A skill group with the given code already exists. Please use another code.",
+            "getError.txt": "An error occurred while trying to retrieve the skill groups info.",
+            "createError.txt": "An error occurred while trying to create a new skill group.",
+            "updateError.txt": "An error occurred while trying to update the skill group.",
+            "deleteError.txt": "An error occurred while trying to delete the skill group."
+        },
+        "contract_persons": {
+            "alreadyExists.txt": "A contract person with the given contract and tarif already exists. Please use contract and/or tarif.",
+            "getError.txt": "An error occurred while trying to retrieve the contract persons info.",
+            "createError.txt": "An error occurred while trying to create a new contract person.",
+            "updateError.txt": "An error occurred while trying to update the contract person.",
+            "deleteError.txt": "An error occurred while trying to delete the contract person."
+        },
+        "contract_tarif_types": {
+            "alreadyExists.txt": "A contract tarif type with the given code already exists. Please use another code.",
+            "getError.txt": "An error occurred while trying to retrieve the contract tarif types info.",
+            "createError.txt": "An error occurred while trying to create a new contract tarif type.",
+            "updateError.txt": "An error occurred while trying to update the contract tarif type.",
+            "deleteError.txt": "An error occurred while trying to delete the contract tarif type."
+        },
+        "contract_tarifs": {
+            "alreadyExists.txt": "A contract tarif with the given code already exists. Please use another code.",
+            "getError.txt": "An error occurred while trying to retrieve the contract tarifs info.",
+            "createError.txt": "An error occurred while trying to create a new contract tarif.",
+            "updateError.txt": "An error occurred while trying to update the contract tarif.",
+            "deleteError.txt": "An error occurred while trying to delete the contract tarif."
+        },
+        "customers": {
+            "alreadyExists.txt": "A customers with the given name already exists. Please use another name.",
+            "getError.txt": "An error occurred while trying to retrieve the items in customers.",
+            "getByIdError.txt": "An error occurred while trying to retrieve the item in customers by using the provided item's id.",
+            "createError.txt": "An error occurred while trying to create a new item in customers.",
+            "updateByIdError.txt": "An error occurred while trying to update the item in customers by using the provided item's id.",
+            "deleteByIdError.txt": "An error occurred while trying to delete the item in customers by using the provided item's id."
+        },
+        "holidays": {
+            "alreadyExists.txt": "A holiday with the given code already exists. Please use another code.",
+            "getError.txt": "An error occurred while trying to retrieve the holidays info.",
+            "createError.txt": "An error occurred while trying to create a new holiday.",
+            "updateError.txt": "An error occurred while trying to update the holiday.",
+            "deleteError.txt": "An error occurred while trying to delete the holiday."
+        },
+        "menu": {
+            "alreadyExists.txt": "A menu with the given id already exists. Please use another id.",
+            "getError.txt": "An error occurred while trying to retrieve the menu info.",
+            "createError.txt": "An error occurred while trying to create a new menu.",
+            "updateError.txt": "An error occurred while trying to update the menu.",
+            "deleteError.txt": "An error occurred while trying to delete the menu."
+        },
+        "menu_item_rights": {
+            "alreadyExists.txt": "A menu item right with the given menu item right label already exists. Please use another menu item right label.",
+            "getError.txt": "An error occurred while trying to retrieve the menu item rights info.",
+            "createError.txt": "An error occurred while trying to create a new menu item right.",
+            "updateError.txt": "An error occurred while trying to update the menu item right.",
+            "deleteError.txt": "An error occurred while trying to delete the menu item right."
+        },
+        "organisational_units": {
+            "alreadyExists.txt": "A organisational unit with the given code already exists. Please use another code.",
+            "getError.txt": "An error occurred while trying to retrieve the organisational units info.",
+            "createError.txt": "An error occurred while trying to create a new organisational unit.",
+            "updateError.txt": "An error occurred while trying to update the organisational unit.",
+            "deleteError.txt": "An error occurred while trying to delete the organisational unit."
+        },
+        "organisational_unit_preferences": {
+            "alreadyExists.txt": "An organisational unit preference with the given ou id already exists. Please use another ou id.",
+            "getError.txt": "An error occurred while trying to retrieve the organisational unit preferences info.",
+            "createError.txt": "An error occurred while trying to create a new organisational unit preference.",
+            "updateError.txt": "An error occurred while trying to update the organisational unit preference.",
+            "deleteError.txt": "An error occurred while trying to delete the organisational unit preference."
+        },
+        "planning": {
+            "alreadyExists.txt": "A planning with the given unique ref id already exists. Please use another unique ref id.",
+            "getError.txt": "An error occurred while trying to retrieve the planning info.",
+            "createError.txt": "An error occurred while trying to create a new planning.",
+            "updateError.txt": "An error occurred while trying to update the planning.",
+            "deleteError.txt": "An error occurred while trying to delete the planning."
+        },
+        "hours_to_days_daytypes": {
+            "alreadyExists.txt": "A hours to days daytype with the given name already exists. Please use another name.",
+            "getError.txt": "An error occurred while trying to retrieve the hours to days daytypes info.",
+            "createError.txt": "An error occurred while trying to create a new hours to days daytype.",
+            "updateError.txt": "An error occurred while trying to update the hours to days daytype.",
+            "deleteError.txt": "An error occurred while trying to delete the hours to days daytype."
+        },
+        "hours_to_days_rules": {
+            "alreadyExists.txt": "A hours to days rule with the given unique ref id already exists. Please use another unique ref id.",
+            "getError.txt": "An error occurred while trying to retrieve the hours to days rules info.",
+            "createError.txt": "An error occurred while trying to create a new hours to days rule.",
+            "updateError.txt": "An error occurred while trying to update the hours to days rule.",
+            "deleteError.txt": "An error occurred while trying to delete the hours to days rule."
+        },
+        "preferences": {
+            "alreadyExists.txt": "A preference with the given preference name already exists. Please use another preference name.",
+            "getError.txt": "An error occurred while trying to retrieve the preferences info.",
+            "createError.txt": "An error occurred while trying to create a new preference.",
+            "updateError.txt": "An error occurred while trying to update the preference.",
+            "deleteError.txt": "An error occurred while trying to delete the preference."
+        },
+        "profile_menu_item_rights": {
+            "alreadyExists.txt": "A profile menu item right with the given unique ref id already exists. Please use another unique ref id.",
+            "getError.txt": "An error occurred while trying to retrieve the profile menu item rights info.",
+            "createError.txt": "An error occurred while trying to create a new profile menu item right.",
+            "updateError.txt": "An error occurred while trying to update the profile menu item right.",
+            "deleteError.txt": "An error occurred while trying to delete the profile menu item right."
+        },
+        "profile_menu_rights": {
+            "alreadyExists.txt": "A profile menu right with the given unique ref id already exists. Please use another unique ref id.",
+            "getError.txt": "An error occurred while trying to retrieve the profile menu rights info.",
+            "createError.txt": "An error occurred while trying to create a new profile menu right.",
+            "updateError.txt": "An error occurred while trying to update the profile menu right.",
+            "deleteError.txt": "An error occurred while trying to delete the profile menu right."
+        },
+        "report_fields": {
+            "alreadyExists.txt": "A report field with the given unique ref id already exists. Please use another unique ref id.",
+            "getError.txt": "An error occurred while trying to retrieve the report fields info.",
+            "createError.txt": "An error occurred while trying to create a new report field.",
+            "updateError.txt": "An error occurred while trying to update the report field.",
+            "deleteError.txt": "An error occurred while trying to delete the report field."
+        },
+        "report_views": {
+            "alreadyExists.txt": "A report view with the given unique ref id already exists. Please use another unique ref id.",
+            "getError.txt": "An error occurred while trying to retrieve the report views info.",
+            "createError.txt": "An error occurred while trying to create a new report view.",
+            "updateError.txt": "An error occurred while trying to update the report view.",
+            "deleteError.txt": "An error occurred while trying to delete the report view."
+        },
+        "skills": {
+            "alreadyExists.txt": "A skill with the given id already exists. Please use another id.",
+            "getError.txt": "An error occurred while trying to retrieve the skills info.",
+            "createError.txt": "An error occurred while trying to create a new skill.",
+            "updateError.txt": "An error occurred while trying to update the skill.",
+            "deleteError.txt": "An error occurred while trying to delete the skill."
+        },
+        "skill_grades": {
+            "alreadyExists.txt": "A skill grade with the given id already exists. Please use another id.",
+            "getError.txt": "An error occurred while trying to retrieve the skill grades info.",
+            "createError.txt": "An error occurred while trying to create a new skill grade.",
+            "updateError.txt": "An error occurred while trying to update the skill grade.",
+            "deleteError.txt": "An error occurred while trying to delete the skill grade."
+        },
+        "skill_matrix": {
+            "alreadyExists.txt": "A skill matrix with the given unique ref id already exists. Please use another unique ref id.",
+            "getError.txt": "An error occurred while trying to retrieve the skill matrix info.",
+            "createError.txt": "An error occurred while trying to create a new skill matrix.",
+            "updateError.txt": "An error occurred while trying to update the skill matrix.",
+            "deleteError.txt": "An error occurred while trying to delete the skill matrix."
+        },
+        "timesheet_events": {
+            "alreadyExists.txt": "A timesheet event with the given id already exists. Please use another id.",
+            "getError.txt": "An error occurred while trying to retrieve the timesheet events info.",
+            "createError.txt": "An error occurred while trying to create a new timesheet event.",
+            "updateError.txt": "An error occurred while trying to update the timesheet event.",
+            "deleteError.txt": "An error occurred while trying to delete the timesheet event."
+        },
+        "timesheet_reports": {
+            "alreadyExists.txt": "A timesheet report with the given id already exists. Please use another id.",
+            "getError.txt": "An error occurred while trying to retrieve the timesheet reports info.",
+            "createError.txt": "An error occurred while trying to create a new timesheet report.",
+            "updateError.txt": "An error occurred while trying to update the timesheet report.",
+            "deleteError.txt": "An error occurred while trying to delete the timesheet report."
+        },
+        "timesheet_reports_mail_settings": {
+            "alreadyExists.txt": "A timesheet reports mail setting with the given id already exists. Please use another id.",
+            "getError.txt": "An error occurred while trying to retrieve the timesheet reports mail settings info.",
+            "createError.txt": "An error occurred while trying to create a new timesheet reports mail setting.",
+            "updateError.txt": "An error occurred while trying to update the timesheet reports mail setting.",
+            "deleteError.txt": "An error occurred while trying to delete the timesheet reports mail setting."
+        },
+        "user_preferences": {
+            "alreadyExists.txt": "A user preference with the given unique ref id already exists. Please use another unique ref id.",
+            "getError.txt": "An error occurred while trying to retrieve the user preferences info.",
+            "createError.txt": "An error occurred while trying to create a new user preference.",
+            "updateError.txt": "An error occurred while trying to update the user preference.",
+            "deleteError.txt": "An error occurred while trying to delete the user preference."
+        },
+        "public_holidays": {
+            "alreadyExists.txt": "A public holiday with the given country, year and date already exists.",
+            "getError.txt": "An error occurred while trying to retrieve the public holidays info.",
+            "createError.txt": "An error occurred while trying to create a new public holiday.",
+            "updateError.txt": "An error occurred while trying to update the public holiday.",
+            "deleteError.txt": "An error occurred while trying to delete the public holiday."
+        },
+        "profileRights": {
+            "updateError.txt": "An error occurred while trying to update the profile rights."
+        },
+        "crm_event_types": {
+            "alreadyExists.txt": "A crm event type with the given id already exists. Please use another id.",
+            "getError.txt": "An error occurred while trying to retrieve the crm event types info.",
+            "createError.txt": "An error occurred while trying to create a new crm event type.",
+            "updateError.txt": "An error occurred while trying to update the crm event type.",
+            "deleteError.txt": "An error occurred while trying to delete the crm event type."
+        },
+        "crm_events": {
+            "alreadyExists.txt": "A crm event with the given id already exists. Please use another id.",
+            "getError.txt": "An error occurred while trying to retrieve the crm events info.",
+            "createError.txt": "An error occurred while trying to create a new crm event.",
+            "updateError.txt": "An error occurred while trying to update the crm event.",
+            "deleteError.txt": "An error occurred while trying to delete the crm event."
+        },
+        "customer_contacts": {
+            "alreadyExists.txt": "A customer contact with the given id already exists. Please use another id.",
+            "getError.txt": "An error occurred while trying to retrieve the customer contacts info.",
+            "createError.txt": "An error occurred while trying to create a new customer contact.",
+            "updateError.txt": "An error occurred while trying to update the customer contact.",
+            "deleteError.txt": "An error occurred while trying to delete the customer contact."
+        },
+        "skill_templates": {
+            "alreadyExists.txt": "A skill template with the given id already exists. Please use another id.",
+            "getError.txt": "An error occurred while trying to retrieve the skill templates info.",
+            "createError.txt": "An error occurred while trying to create a new skill template.",
+            "updateError.txt": "An error occurred while trying to update the skill template.",
+            "deleteError.txt": "An error occurred while trying to delete the skill template."
+        },
+        "skill_templates_config": {
+            "alreadyExists.txt": "A skill templates config with the given id already exists. Please use another id.",
+            "getError.txt": "An error occurred while trying to retrieve the skill templates config info.",
+            "createError.txt": "An error occurred while trying to create a new skill templates config.",
+            "updateError.txt": "An error occurred while trying to update the skill templates config.",
+            "deleteError.txt": "An error occurred while trying to delete the skill templates config."
+        },
+        "template_types": {
+            "alreadyExists.txt": "A template type with the given id already exists. Please use another id.",
+            "getError.txt": "An error occurred while trying to retrieve the template types info.",
+            "createError.txt": "An error occurred while trying to create a new template type.",
+            "updateError.txt": "An error occurred while trying to update the template type.",
+            "deleteError.txt": "An error occurred while trying to delete the template type."
+        },
+        "templates": {
+            "alreadyExists.txt": "A template with the given id already exists. Please use another id.",
+            "codeAlreadyExists.txt": "A template with the given code already exists. Please use another code.",
+            "getError.txt": "An error occurred while trying to retrieve the templates info.",
+            "createError.txt": "An error occurred while trying to create a new template.",
+            "updateError.txt": "An error occurred while trying to update the template.",
+            "deleteError.txt": "An error occurred while trying to delete the template."
+        },
+        "countries": {
+            "alreadyExists.txt": "A countries with the given code already exists. Please use another code.",
+            "getError.txt": "An error occurred while trying to retrieve the items in countries.",
+            "getByIdError.txt": "An error occurred while trying to retrieve the item in countries by using the provided item's id.",
+            "createError.txt": "An error occurred while trying to create a new item in countries.",
+            "updateByIdError.txt": "An error occurred while trying to update the item in countries by using the provided item's id.",
+            "deleteByIdError.txt": "An error occurred while trying to delete the item in countries by using the provided item's id."
+        }
+    },
+    "successMessages": {
+        "_code_generator": {
+            "codeSuccess.txt": "Successfully generated CRUD code."
+        },
+        "database": {
+            "databaseConnection.txt": "Successfully connected to the database."
+        },
+        "test": {
+            "getSuccess.txt": "Successfull connection to FE.",
+            "root.txt": "Root url successfully retrieved"
+        },
+        "login": {
+            "authenticationSuccess.txt": "Authentication successful.",
+            "signupSuccess.txt": "User successfully signed up."
+        },
+        "audit": {
+            "getSuccess.txt": "Audit records successfully retrieved."
+        },
+        "contracts": {
+            "getSuccess.txt": "Contract info successfully retrieved.",
+            "createSuccess.txt": "Contract succesfully created",
+            "updateSuccess.txt": "Contract succesfully created",
+            "deletedSuccess.txt": "Contract successfully deleted."
+        },
+        "contract_invoice_base": {
+            "getSuccess.txt": "Contract invoice bases successfully received.",
+            "createCSuccess.txt": "Contract invoice code successfully created.",
+            "updateSuccess.txt": "Contract invoice base successfully updated.",
+            "deletedSuccess.txt": "Contract invoice base successfully deleted."
+        },
+        "contract_mode": {
+            "getSuccess.txt": "Contract mode successfully received.",
+            "createSuccess.txt": "Contract mode successfully created.",
+            "updateSuccess.txt": "Contract mode successfully updated.",
+            "deletedSuccess.txt": "Contract mode successfully deleted."
+        },
+        "contract_roles": {
+            "getSuccess.txt": "Contract roles successfully received.",
+            "createSuccess.txt": "Contract role successfully created.",
+            "updateSuccess.txt": "Contract role successfully updated.",
+            "deletedSuccess.txt": "Contract mode successfully deleted."
+        },
+        "currencies": {
+            "getSuccess.txt": "Countries successfully received.",
+            "createSuccess.txt": "Country successfully created.",
+            "updateSuccess.txt": "Country successfully updated.",
+            "deleteSuccess.txt": "Country successfully deleted."
+        },
+        "languages": {
+            "getSuccess.txt": "Languages successfully received.",
+            "getByIdSuccess.txt": "Languages item successfully received by using the provided item's id.",
+            "createSuccess.txt": "Languages successfully created.",
+            "updateByIdSuccess.txt": "Languages item successfully updated by using the provided item's id.",
+            "deleteByIdSuccess.txt": "Languages item successfully deleted by using the provided item's id.",
+            "noIdToDeleteSuccess.txt": "No languages with given id found to delete.",
+            "noIdToUpdateSuccess.txt": "No languages with given id found to update."
+        },
+        "intervention_types": {
+            "getSuccess.txt": "Intervention types successfully received.",
+            "createSuccess.txt": "Intervention type successfully created.",
+            "updateSuccess.txt": "Intervention type successfully updated.",
+            "deleteSuccess.txt": "Intervention type successfully deleted."
+        },
+        "issue_types": {
+            "getSuccess.txt": "Issue types successfully received.",
+            "createSuccess.txt": "Issue type successfully created.",
+            "updateSuccess.txt": "Issue type successfully updated.",
+            "deleteSuccess.txt": "Issue type successfully deleted."
+        },
+        "users": {
+            "getSuccess.txt": "Users successfully received.",
+            "createSuccess.txt": "User successfully created.",
+            "updateSuccess.txt": "User successfully updated.",
+            "deleteSuccess.txt": "User successfully deleted."
+        },
+        "user_types": {
+            "getSuccess.txt": "User_types successfully received.",
+            "getByIdSuccess.txt": "User_types item successfully received by using the provided item's id.",
+            "createSuccess.txt": "User_types successfully created.",
+            "updateByIdSuccess.txt": "User_types item successfully updated by using the provided item's id.",
+            "deleteByIdSuccess.txt": "User_types item successfully deleted by using the provided item's id.",
+            "noIdToDeleteSuccess.txt": "No user_types with given id found to delete.",
+            "noIdToUpdateSuccess.txt": "No user_types with given id found to update."
+        },
+        "preferences_categories": {
+            "getSuccess.txt": "Preferences categories successfully received.",
+            "createSuccess.txt": "Preferences categorie successfully created.",
+            "updateSuccess.txt": "Preferences categorie successfully updated.",
+            "deleteSuccess.txt": "Preferences categorie successfully deleted."
+        },
+        "profiles": {
+            "getSuccess.txt": "Profiles successfully received.",
+            "createSuccess.txt": "Profile successfully created.",
+            "updateSuccess.txt": "Profile successfully updated.",
+            "deleteSuccess.txt": "Profile successfully deleted."
+        },
+        "reports": {
+            "getSuccess.txt": "Reports successfully received.",
+            "createSuccess.txt": "Report successfully created.",
+            "updateSuccess.txt": "Report successfully updated.",
+            "deleteSuccess.txt": "Report successfully deleted."
+        },
+        "skill_groups": {
+            "getSuccess.txt": "Skill groups successfully received.",
+            "createSuccess.txt": "Skill group successfully created.",
+            "updateSuccess.txt": "Skill group successfully updated.",
+            "deleteSuccess.txt": "Skill group successfully deleted."
+        },
+        "contract_persons": {
+            "getSuccess.txt": "Contract persons successfully received.",
+            "createSuccess.txt": "Contract person successfully created.",
+            "updateSuccess.txt": "Contract person successfully updated.",
+            "deleteSuccess.txt": "Contract person successfully deleted."
+        },
+        "contract_tarif_types": {
+            "getSuccess.txt": "Contract tarif types successfully received.",
+            "createSuccess.txt": "Contract tarif type successfully created.",
+            "updateSuccess.txt": "Contract tarif type successfully updated.",
+            "deleteSuccess.txt": "Contract tarif type successfully deleted."
+        },
+        "contract_tarifs": {
+            "getSuccess.txt": "Contract tarifs successfully received.",
+            "createSuccess.txt": "Contract tarif successfully created.",
+            "updateSuccess.txt": "Contract tarif successfully updated.",
+            "deleteSuccess.txt": "Contract tarif successfully deleted."
+        },
+        "customers": {
+            "getSuccess.txt": "Customers successfully received.",
+            "getByIdSuccess.txt": "Customers item successfully received by using the provided item's id.",
+            "createSuccess.txt": "Customers successfully created.",
+            "updateByIdSuccess.txt": "Customers item successfully updated by using the provided item's id.",
+            "deleteByIdSuccess.txt": "Customers item successfully deleted by using the provided item's id.",
+            "noIdToDeleteSuccess.txt": "No customers with given id found to delete.",
+            "noIdToUpdateSuccess.txt": "No customers with given id found to update."
+        },
+        "holidays": {
+            "getSuccess.txt": "Holidays successfully received.",
+            "createSuccess.txt": "Holiday successfully created.",
+            "updateSuccess.txt": "Holiday successfully updated.",
+            "deleteSuccess.txt": "Holiday successfully deleted."
+        },
+        "menu": {
+            "getSuccess.txt": "Menu successfully received.",
+            "createSuccess.txt": "Menu successfully created.",
+            "updateSuccess.txt": "Menu successfully updated.",
+            "deleteSuccess.txt": "Menu successfully deleted."
+        },
+        "menu_item_rights": {
+            "getSuccess.txt": "Menu item rights successfully received.",
+            "createSuccess.txt": "Menu item right successfully created.",
+            "updateSuccess.txt": "Menu item right successfully updated.",
+            "deleteSuccess.txt": "Menu item right successfully deleted."
+        },
+        "organisational_units": {
+            "getSuccess.txt": "Organisational units successfully received.",
+            "createSuccess.txt": "Organisational unit successfully created.",
+            "updateSuccess.txt": "Organisational unit successfully updated.",
+            "deleteSuccess.txt": "Organisational unit successfully deleted."
+        },
+        "organisational_unit_preferences": {
+            "getSuccess.txt": "Organisational unit preferences successfully received.",
+            "createSuccess.txt": "Organisational unit preference successfully created.",
+            "updateSuccess.txt": "Organisational unit preference successfully updated.",
+            "deleteSuccess.txt": "Organisational unit preference successfully deleted."
+        },
+        "planning": {
+            "getSuccess.txt": "Planning successfully received.",
+            "createSuccess.txt": "Planning successfully created.",
+            "updateSuccess.txt": "Planning successfully updated.",
+            "deleteSuccess.txt": "Planning successfully deleted."
+        },
+        "hours_to_days_daytypes": {
+            "getSuccess.txt": "Hours to days daytypes successfully received.",
+            "createSuccess.txt": "Hours to days daytype successfully created.",
+            "updateSuccess.txt": "Hours to days daytype successfully updated.",
+            "deleteSuccess.txt": "Hours to days daytype successfully deleted."
+        },
+        "hours_to_days_rules": {
+            "getSuccess.txt": "Hours to days rules successfully received.",
+            "createSuccess.txt": "Hours to days rule successfully created.",
+            "updateSuccess.txt": "Hours to days rule successfully updated.",
+            "deleteSuccess.txt": "Hours to days rule successfully deleted."
+        },
+        "preferences": {
+            "getSuccess.txt": "Preferences successfully received.",
+            "createSuccess.txt": "Preference successfully created.",
+            "updateSuccess.txt": "Preference successfully updated.",
+            "deleteSuccess.txt": "Preference successfully deleted."
+        },
+        "profile_menu_item_rights": {
+            "getSuccess.txt": "Profile menu item rights successfully received.",
+            "createSuccess.txt": "Profile menu item right successfully created.",
+            "updateSuccess.txt": "Profile menu item right successfully updated.",
+            "deleteSuccess.txt": "Profile menu item right successfully deleted."
+        },
+        "profile_menu_rights": {
+            "getSuccess.txt": "Profile menu rights successfully received.",
+            "createSuccess.txt": "Profile menu right successfully created.",
+            "updateSuccess.txt": "Profile menu right successfully updated.",
+            "deleteSuccess.txt": "Profile menu right successfully deleted."
+        },
+        "report_fields": {
+            "getSuccess.txt": "Report fields successfully received.",
+            "createSuccess.txt": "Report field successfully created.",
+            "updateSuccess.txt": "Report field successfully updated.",
+            "deleteSuccess.txt": "Report field successfully deleted."
+        },
+        "report_views": {
+            "getSuccess.txt": "Report views successfully received.",
+            "createSuccess.txt": "Report view successfully created.",
+            "updateSuccess.txt": "Report view successfully updated.",
+            "deleteSuccess.txt": "Report view successfully deleted."
+        },
+        "skills": {
+            "getSuccess.txt": "Skills successfully received.",
+            "createSuccess.txt": "Skill successfully created.",
+            "updateSuccess.txt": "Skill successfully updated.",
+            "deleteSuccess.txt": "Skill successfully deleted."
+        },
+        "skill_grades": {
+            "getSuccess.txt": "Skill grades successfully received.",
+            "createSuccess.txt": "Skill grade successfully created.",
+            "updateSuccess.txt": "Skill grade successfully updated.",
+            "deleteSuccess.txt": "Skill grade successfully deleted."
+        },
+        "skill_matrix": {
+            "getSuccess.txt": "Skill matrix successfully received.",
+            "createSuccess.txt": "Skill matrix successfully created.",
+            "updateSuccess.txt": "Skill matrix successfully updated.",
+            "deleteSuccess.txt": "Skill matrix successfully deleted."
+        },
+        "timesheet_events": {
+            "getSuccess.txt": "Timesheet events successfully received.",
+            "createSuccess.txt": "Timesheet event successfully created.",
+            "updateSuccess.txt": "Timesheet event successfully updated.",
+            "deleteSuccess.txt": "Timesheet event successfully deleted."
+        },
+        "timesheet_reports": {
+            "getSuccess.txt": "Timesheet reports successfully received.",
+            "createSuccess.txt": "Timesheet report successfully created.",
+            "updateSuccess.txt": "Timesheet report successfully updated.",
+            "deleteSuccess.txt": "Timesheet report successfully deleted."
+        },
+        "timesheet_reports_mail_settings": {
+            "getSuccess.txt": "Timesheet reports mail settings successfully received.",
+            "createSuccess.txt": "Timesheet reports mail setting successfully created.",
+            "updateSuccess.txt": "Timesheet reports mail setting successfully updated.",
+            "deleteSuccess.txt": "Timesheet reports mail setting successfully deleted."
+        },
+        "user_preferences": {
+            "getSuccess.txt": "User preferences successfully received.",
+            "createSuccess.txt": "User preference successfully created.",
+            "updateSuccess.txt": "User preference successfully updated.",
+            "deleteSuccess.txt": "User preference successfully deleted."
+        },
+        "public_holidays": {
+            "getSuccess.txt": "Public holidays successfully received.",
+            "createSuccess.txt": "Public holiday successfully created.",
+            "updateSuccess.txt": "Public holiday successfully updated.",
+            "deleteSuccess.txt": "Public holiday successfully deleted."
+        },
+        "profileRights": {
+            "updateError.txt": "Profile rights successfully updated."
+        },
+        "crm_event_types": {
+            "getSuccess.txt": "Crm event types successfully received.",
+            "createSuccess.txt": "Crm event type successfully created.",
+            "updateSuccess.txt": "Crm event type successfully updated.",
+            "deleteSuccess.txt": "Crm event type successfully deleted."
+        },
+        "crm_events": {
+            "getSuccess.txt": "Crm events successfully received.",
+            "createSuccess.txt": "Crm event successfully created.",
+            "updateSuccess.txt": "Crm event successfully updated.",
+            "deleteSuccess.txt": "Crm event successfully deleted."
+        },
+        "customer_contacts": {
+            "getSuccess.txt": "Customer contacts successfully received.",
+            "createSuccess.txt": "Customer contact successfully created.",
+            "updateSuccess.txt": "Customer contact successfully updated.",
+            "deleteSuccess.txt": "Customer contact successfully deleted."
+        },
+        "input_validations": {
+            "getError.txt": "Input validations info successfully received."
+        },
+        "skill_templates": {
+            "getSuccess.txt": "Skill templates successfully received.",
+            "createSuccess.txt": "Skill template successfully created.",
+            "updateSuccess.txt": "Skill template successfully updated.",
+            "deleteSuccess.txt": "Skill template successfully deleted."
+        },
+        "skill_templates_config": {
+            "getSuccess.txt": "Skill templates config successfully received.",
+            "createSuccess.txt": "Skill templates config successfully created.",
+            "updateSuccess.txt": "Skill templates config successfully updated.",
+            "deleteSuccess.txt": "Skill templates config successfully deleted."
+        },
+        "template_types": {
+            "getSuccess.txt": "Template types successfully received.",
+            "createSuccess.txt": "Template type successfully created.",
+            "updateSuccess.txt": "Template type successfully updated.",
+            "deleteSuccess.txt": "Template type successfully deleted."
+        },
+        "templates": {
+            "getSuccess.txt": "Templates successfully received.",
+            "createSuccess.txt": "Template successfully created.",
+            "updateSuccess.txt": "Template successfully updated.",
+            "deleteSuccess.txt": "Template successfully deleted."
+        },
+        "countries": {
+            "getSuccess.txt": "Countries successfully received.",
+            "getByIdSuccess.txt": "$Table°name$ item successfully received by using the provided item's id.",
+            "createSuccess.txt": "Countries successfully created.",
+            "updateByIdSuccess.txt": "Countries item successfully updated by using the provided item's id.",
+            "deleteByIdSuccess.txt": "Countries item successfully deleted by using the provided item's id.",
+            "noIdToDeleteSuccess.txt": "No countries with given id found to delete.",
+            "noIdToUpdateSuccess.txt": "No countries with given id found to update."
+        }
+    }
+}

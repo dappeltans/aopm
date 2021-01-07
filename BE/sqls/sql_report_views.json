@@ -1,0 +1,48 @@
+{
+    "select": {
+        "getAll": "
+            SELECT  
+                 id,
+                 unique_ref_id,
+                 report_id,
+                 report_field_id,
+                 user_id,
+                 visible
+            FROM report_views 
+        ",
+        "checkExistenceByUnique_ref_id": "
+            SELECT count(*) as total 
+            FROM report_views 
+            WHERE unique_ref_id = '@report_views@unique_ref_id@'
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into report_views ( 
+                 unique_ref_id,
+                 report_id,
+                 report_field_id,
+                 user_id,
+                 visible
+            )
+            VALUES (
+                 '@report_views@unique_ref_id@',
+                 '@report_views@report_id@',
+                 '@report_views@report_field_id@',
+                 '@report_views@user_id@',
+                 '@report_views@visible@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE report_views SET @fields@values@
+            WHERE id = '@report_views@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM report_views WHERE id = '@report_views@id@'
+        "
+    }
+}

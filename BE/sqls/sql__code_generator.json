@@ -1,0 +1,7 @@
+{
+    "describe": {
+        "describeTable": "
+                            SHOW FULL COLUMNS FROM @_code_generator@tableName@
+                         "
+    }
+} 

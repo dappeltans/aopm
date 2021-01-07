@@ -1,0 +1,82 @@
+{
+    "select": {
+        "getAll": "
+            SELECT  
+                 id,
+                 skill_group_id,
+                 order_number,
+                 code,
+                 label,
+                 active
+            FROM skills 
+        ",
+        "getAllForSkillGroupId": "
+            SELECT  
+                 S.id,
+                 S.skill_group_id,
+                 PG.order_number as skill_parentgroup_order_number,
+                 PG.code as skill_parentgroup_code,
+                 PG.label as skill_parentgroup_label,
+                 PG.icon_cls as skill_parentgroup_icon_cls,
+                 PG.active as skill_parentgroup_active,
+                 SG.order_number as skill_subgroup_order_number,
+                 SG.code as skill_subgroup_code,
+                 SG.label as skill_subgroup_label,
+                 SG.icon_cls as skill_subgroup_icon_cls,
+                 SG.active as skill_subgroup_active,
+                 S.order_number as order_number,
+                 S.code,
+                 S.label,
+                 S.active
+            FROM skills S
+            LEFT JOIN skill_groups SG on S.skill_group_id = SG.id 
+            LEFT JOIN skill_groups PG on SG.parent_id = PG.id 
+            WHERE S.skill_group_id = '@skills@skill_group_id@'
+            ORDER BY PG.order_number asc, SG.order_number, S.order_number
+        ",
+        "checkExistenceById": "
+            SELECT count(*) as total 
+            FROM skills 
+            WHERE id = '@skills@id@'
+        ",
+        "getAllSkillInfo":"
+            SELECT  
+                id,
+                skill_group_id,
+                order_number,
+                code,
+                label,
+                active
+            FROM skills 
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into skills ( 
+                 skill_group_id,
+                 order_number,
+                 code,
+                 label,
+                 active
+            )
+            VALUES (
+                 '@skills@skill_group_id@',
+                 '@skills@order_number@',
+                 '@skills@code@',
+                 '@skills@label@',
+                 '@skills@active@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE skills SET @fields@values@
+            WHERE id = '@skills@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM skills WHERE id = '@skills@id@'
+        "
+    }
+}

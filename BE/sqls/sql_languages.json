@@ -1,0 +1,61 @@
+{
+    "select": {
+        "getAllOffsetLimit": "
+            SELECT  
+                 id,
+                 code,
+                 description,
+                 active
+            FROM languages 
+            ORDER BY id 
+            LIMIT @pagination@limit@ OFFSET @pagination@offset@
+        ",
+        "getAll": "
+            SELECT  
+                 id,
+                 code,
+                 description,
+                 active
+            FROM languages 
+        ",
+        "getById": "
+            SELECT  
+                 id,
+                 code,
+                 description,
+                 active
+            FROM languages 
+            WHERE id = '@languages@id@'
+        ",
+        "checkExistenceByUniqueReference": "
+            SELECT count(*) as total 
+            FROM languages 
+            WHERE code = '@languages@code@'
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into languages ( 
+                 code,
+                 description,
+                 active
+            )
+            VALUES (
+                 '@languages@code@',
+                 '@languages@description@',
+                 '@languages@active@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE languages SET @fields@values@
+            WHERE id = '@languages@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM languages WHERE id = '@languages@id@'
+        "
+    }
+}

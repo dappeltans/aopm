@@ -1,0 +1,105 @@
+{
+    "select": {
+        "getAll": "
+            SELECT  T.id,
+                    T.contract_id,
+                    C.code as contract_code,
+                    C.description as contract_description,
+                    T.contract_role_id,
+                    R.code as contract_role_code,
+                    R.description as contract_role_description,
+                    T.tarif,
+                    C.invoice_base_id,
+                    I.code as invoice_base_code,
+                    I.description as invoice_base_description,
+                    C.invoice_currency_id,
+                    U.code as currency_code,
+                    T.active
+            FROM contract_tarifs as T
+            LEFT JOIN contracts C on T.contract_id = C.id
+            LEFT JOIN contract_invoice_base I on C.invoice_base_id = I.id
+            LEFT JOIN contract_roles R on T.contract_role_id = R.id
+            LEFT JOIN currencies U on C.invoice_currency_id = U.id
+            ORDER BY T.active desc
+        ",
+        "checkExistence": "
+            SELECT count(*) as total 
+            FROM contract_tarifs 
+            WHERE contract_id = '@contract_tarifs@contract_id@' and 
+                  contract_role_id = '@contract_tarifs@contract_role_id@' and 
+                  tarif = '@contract_tarifs@tarif@'
+        ",
+        "getByContractId": "
+            SELECT  T.id,
+                    T.contract_id,
+                    C.code as contract_code,
+                    C.description as contract_description,
+                    T.contract_role_id,
+                    R.code as contract_role_code,
+                    R.description as contract_role_description,
+                    T.tarif,
+                    C.invoice_base_id,
+                    I.code as invoice_base_code,
+                    I.description as invoice_base_description,
+                    C.invoice_currency_id,
+                    U.code as currency_code,
+                    T.active
+            FROM contract_tarifs as T
+            LEFT JOIN contracts C on T.contract_id = C.id
+            LEFT JOIN contract_invoice_base I on C.invoice_base_id = I.id
+            LEFT JOIN contract_roles R on T.contract_role_id = R.id
+            LEFT JOIN currencies U on C.invoice_currency_id = U.id
+            WHERE contract_id = '@contract_tarifs@contract_id@'
+            ORDER BY T.active desc
+        ",
+        "getById": "
+            SELECT  T.id,
+                    T.contract_id,
+                    C.code as contract_code,
+                    C.description as contract_description,
+                    T.contract_role_id,
+                    R.code as contract_role_code,
+                    R.description as contract_role_description,
+                    T.tarif,
+                    C.invoice_base_id,
+                    I.code as invoice_base_code,
+                    I.description as invoice_base_description,
+                    C.invoice_currency_id,
+                    U.code as currency_code,
+                    T.active
+            FROM contract_tarifs as T
+            LEFT JOIN contracts C on T.contract_id = C.id
+            LEFT JOIN contract_invoice_base I on C.invoice_base_id = I.id
+            LEFT JOIN contract_roles R on T.contract_role_id = R.id
+            LEFT JOIN currencies U on C.invoice_currency_id = U.id
+            WHERE T.id = '@contract_tarifs@id@'
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT INTO contract_tarifs ( 
+                contract_id,
+                contract_role_id,
+                tarif,	
+                active
+            )
+            VALUES (
+                '@contract_tarifs@contract_id@',
+                '@contract_tarifs@contract_role_id@', 
+                '@contract_tarifs@tarif@',
+                '@contract_tarifs@active@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE contract_tarifs SET @fields@values@
+            WHERE id = '@contract_tarifs@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM contract_tarifs WHERE id = '@contract_tarifs@id@'
+        "
+    }
+}

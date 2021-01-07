@@ -1,0 +1,96 @@
+{
+    "select": {
+        "getAll": "
+            SELECT  
+                 id,
+                 report_id,
+                 user_id,
+                 contract_id,
+                 tarif_id,
+                 start_date,
+                 end_date,
+                 action_datetime,
+                 mailed_datetime,
+                 signed_datetime,
+                 action_user_id,
+                 action,
+                 report_filename_unsigned,
+                 report_filename_signed,
+                 signed_report_active,
+                 unsigned_report_active,
+                 mailed,
+                 signed,
+                 sent_from,
+                 sent_to,
+                 sent_cc,
+                 sent_bcc
+            FROM timesheet_reports 
+        ",
+        "checkExistenceById": "
+            SELECT count(*) as total 
+            FROM timesheet_reports 
+            WHERE id = '@timesheet_reports@id@'
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into timesheet_reports ( 
+                 report_id,
+                 user_id,
+                 contract_id,
+                 tarif_id,
+                 start_date,
+                 end_date,
+                 action_datetime,
+                 mailed_datetime,
+                 signed_datetime,
+                 action_user_id,
+                 action,
+                 report_filename_unsigned,
+                 report_filename_signed,
+                 signed_report_active,
+                 unsigned_report_active,
+                 mailed,
+                 signed,
+                 sent_from,
+                 sent_to,
+                 sent_cc,
+                 sent_bcc
+            )
+            VALUES (
+                 '@timesheet_reports@report_id@',
+                 '@timesheet_reports@user_id@',
+                 '@timesheet_reports@contract_id@',
+                 '@timesheet_reports@tarif_id@',
+                 '@timesheet_reports@start_date@',
+                 '@timesheet_reports@end_date@',
+                 '@timesheet_reports@action_datetime@',
+                 '@timesheet_reports@mailed_datetime@',
+                 '@timesheet_reports@signed_datetime@',
+                 '@timesheet_reports@action_user_id@',
+                 '@timesheet_reports@action@',
+                 '@timesheet_reports@report_filename_unsigned@',
+                 '@timesheet_reports@report_filename_signed@',
+                 '@timesheet_reports@signed_report_active@',
+                 '@timesheet_reports@unsigned_report_active@',
+                 '@timesheet_reports@mailed@',
+                 '@timesheet_reports@signed@',
+                 '@timesheet_reports@sent_from@',
+                 '@timesheet_reports@sent_to@',
+                 '@timesheet_reports@sent_cc@',
+                 '@timesheet_reports@sent_bcc@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE timesheet_reports SET @fields@values@
+            WHERE id = '@timesheet_reports@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM timesheet_reports WHERE id = '@timesheet_reports@id@'
+        "
+    }
+}

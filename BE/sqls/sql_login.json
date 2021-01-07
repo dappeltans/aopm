@@ -1,0 +1,57 @@
+{
+    "select": {
+        "checkExistenceByEmail": "
+            SELECT count(*) as total 
+            FROM users 
+            WHERE email_address = '@login@email_address@'
+        ",
+        "getTenantsByEmail": "
+            SELECT A.email_address as user_email_address, A.tenant_name as tenant_name, A.user_id as user_id  FROM (
+                SELECT U.email_address as email_address, T.name as tenant_name, U.id as user_id from user_tenants UT 
+                    LEFT JOIN users U on UT.user_id = U.id
+                    LEFT JOIN tenants T on UT.tenant_id = T.id
+                WHERE U.active = 1 and T.active = 1
+            ) as A 
+            WHERE A.email_address = '@login@email_address@'
+        ",
+        "getTenantsByUserId": "
+            SELECT A.email_address as user_email_address, A.tenant_name as tenant_name, A.user_id as user_id  FROM (
+                SELECT U.email_address as email_address, T.name as tenant_name, U.id as user_id from user_tenants UT 
+                    LEFT JOIN users U on UT.user_id = U.id
+                    LEFT JOIN tenants T on UT.tenant_id = T.id
+                WHERE U.active = 1 and T.active = 1
+            ) as A 
+            WHERE A.user_id = '@login@user_id@'
+        ",
+        "checkExistenceByEmailAndTenant": "
+            SELECT count(*) as total from (
+                SELECT A.email_address, A.tenant_name as tenant_name  FROM (
+                    SELECT U.email_address as email_address, T.name as tenant_name from user_tenants UT 
+                        LEFT JOIN users U on UT.user_id = U.id
+                        LEFT JOIN tenants T on UT.tenant_id = T.id
+                ) as A 
+                WHERE A.email_address = '@login@email_address@' and A.tenant_name = '@login@tenant@'
+            ) as TOT
+        ",
+        "checkExistenceByUserIdAndTenant": "
+            SELECT count(*) as total from (
+                SELECT A.user_id, A.tenant_name as tenant_name  FROM (
+                    SELECT U.id as user_id, T.name as tenant_name from user_tenants UT 
+                        LEFT JOIN users U on UT.user_id = U.id
+                        LEFT JOIN tenants T on UT.tenant_id = T.id
+                ) as A 
+                WHERE A.user_id = '@login@user_id@' and A.tenant_name = '@login@tenant_name@'
+            ) as TOT
+        ",
+        "getUserIdByEmail": "
+            SELECT  id
+            FROM users 
+            WHERE email_address = '@login@email_address@' and active = 1
+        ",
+        "getUserInfoByEmail": "
+            SELECT  id, email_address, password, active
+            FROM users 
+            WHERE email_address = '@login@email_address@' and active = 1
+        "
+    }
+}

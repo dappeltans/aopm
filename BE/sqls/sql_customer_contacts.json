@@ -1,0 +1,60 @@
+{
+    "select": {
+        "getAll": "
+            SELECT  
+                 id,
+                 customer_id,
+                 first_name,
+                 last_name,
+                 email_address,
+                 phone_office,
+                 phone_mobile,
+                 department,
+                 function,
+                 comment
+            FROM customer_contacts 
+        ",
+        "checkExistenceById": "
+            SELECT count(*) as total 
+            FROM customer_contacts 
+            WHERE id = '@customer_contacts@id@'
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into customer_contacts ( 
+                 customer_id,
+                 first_name,
+                 last_name,
+                 email_address,
+                 phone_office,
+                 phone_mobile,
+                 department,
+                 function,
+                 comment
+            )
+            VALUES (
+                 '@customer_contacts@customer_id@',
+                 '@customer_contacts@first_name@',
+                 '@customer_contacts@last_name@',
+                 '@customer_contacts@email_address@',
+                 '@customer_contacts@phone_office@',
+                 '@customer_contacts@phone_mobile@',
+                 '@customer_contacts@department@',
+                 '@customer_contacts@function@',
+                 '@customer_contacts@comment@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE customer_contacts SET @fields@values@
+            WHERE id = '@customer_contacts@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM customer_contacts WHERE id = '@customer_contacts@id@'
+        "
+    }
+}

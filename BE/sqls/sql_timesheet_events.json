@@ -1,0 +1,101 @@
+{
+    "select": {
+        "getAll": "
+            SELECT  
+                 id,
+                 user_id,
+                 contract_id,
+                 tarif_id,
+                 task_type_id,
+                 project_task_id,
+                 start_time,
+                 end_time,
+                 onsite,
+                 creation_date,
+                 update_date,
+                 description_long,
+                 description_short,
+                 percentage_completed,
+                 comment,
+                 required_customer_action,
+                 issue_supportcase_created,
+                 issue_supportcase_id,
+                 issue_supportcase_description,
+                 issue_blocking,
+                 issue_description,
+                 issue_lost_hours,
+                 issue_lost_minutes,
+                 issue_type_id,
+                 invoicable
+            FROM timesheet_events 
+        ",
+        "checkExistenceById": "
+            SELECT count(*) as total 
+            FROM timesheet_events 
+            WHERE id = '@timesheet_events@id@'
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into timesheet_events ( 
+                 user_id,
+                 contract_id,
+                 tarif_id,
+                 task_type_id,
+                 project_task_id,
+                 start_time,
+                 end_time,
+                 onsite,
+                 description_long,
+                 description_short,
+                 percentage_completed,
+                 comment,
+                 required_customer_action,
+                 issue_supportcase_created,
+                 issue_supportcase_id,
+                 issue_supportcase_description,
+                 issue_blocking,
+                 issue_description,
+                 issue_lost_hours,
+                 issue_lost_minutes,
+                 issue_type_id,
+                 invoicable
+            )
+            VALUES (
+                 '@timesheet_events@user_id@',
+                 '@timesheet_events@contract_id@',
+                 '@timesheet_events@tarif_id@',
+                 '@timesheet_events@task_type_id@',
+                 '@timesheet_events@project_task_id@',
+                 '@timesheet_events@start_time@',
+                 '@timesheet_events@end_time@',
+                 '@timesheet_events@onsite@',
+                 '@timesheet_events@description_long@',
+                 '@timesheet_events@description_short@',
+                 '@timesheet_events@percentage_completed@',
+                 '@timesheet_events@comment@',
+                 '@timesheet_events@required_customer_action@',
+                 '@timesheet_events@issue_supportcase_created@',
+                 '@timesheet_events@issue_supportcase_id@',
+                 '@timesheet_events@issue_supportcase_description@',
+                 '@timesheet_events@issue_blocking@',
+                 '@timesheet_events@issue_description@',
+                 '@timesheet_events@issue_lost_hours@',
+                 '@timesheet_events@issue_lost_minutes@',
+                 '@timesheet_events@issue_type_id@',
+                 '@timesheet_events@invoicable@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE timesheet_events SET @fields@values@
+            WHERE id = '@timesheet_events@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM timesheet_events WHERE id = '@timesheet_events@id@'
+        "
+    }
+}

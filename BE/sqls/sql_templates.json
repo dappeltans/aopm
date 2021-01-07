@@ -1,0 +1,75 @@
+{
+    "select": {
+        "getAll": "
+            SELECT  
+                 id,
+                 type,
+                 common,
+                 user_id,
+                 code,
+                 config,
+                 active
+            FROM templates 
+        ",
+        "checkExistenceById": "
+            SELECT count(*) as total 
+            FROM templates 
+            WHERE id = '@templates@id@'
+        ",
+        "checkExistenceByUserIdAndCodeAndType": "
+            SELECT count(*) as total 
+            FROM templates 
+            WHERE user_id = '@templates@user_id@' and code = '@templates@code@' and type = '@templates@type@' and common = 0
+        ",
+        "checkExistenceByCodeAndType": "
+            SELECT count(*) as total 
+            FROM templates 
+            WHERE code = '@templates@code@' and type = '@templates@type@' and common = 1
+        ",
+        "getAllByTypeId": "
+            SELECT  
+                id,
+                type,
+                common,
+                user_id,
+                code,
+                config,
+                active
+            FROM templates 
+            WHERE type = '@templates@type@'
+                  and (common = 1 or (common = 0 and user_id = '@templates@user_id@'))
+
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into templates ( 
+                 type,
+                 common,
+                 user_id,
+                 code,
+                 config,
+                 active
+            )
+            VALUES (
+                 '@templates@type@',
+                 '@templates@common@',
+                 '@templates@user_id@',
+                 '@templates@code@',
+                 '@templates@config@',
+                 '@templates@active@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE templates SET @fields@values@
+            WHERE id = '@templates@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM templates WHERE id = '@templates@id@'
+        "
+    }
+}

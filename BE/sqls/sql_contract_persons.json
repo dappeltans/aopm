@@ -1,0 +1,102 @@
+{
+    "select": {
+        "getById": "
+            SELECT  P.id,
+                    P.contract_id,
+                    C.description as contract_description,
+                    C.code as contract_code,
+                    R.id as contract_role_id,
+                    R.code as contract_role_code,
+                    R.description as contract_role_description,
+                    P.user_id,
+                    U.first_name,
+                    U.last_name,
+                    U.picture, 
+                    P.tarif_id,
+                    T.tarif as tarif,
+                    I.id as invoice_base_id,
+                    I.code as invoice_base_code,
+                    I.description as invoice_base_description,
+                    CU.id as currency_id,
+                    CU.code as currency_code,
+                    P.assigned_units,
+                    P.active
+            FROM contract_persons P 
+            LEFT JOIN contracts C on P.contract_id = C.id
+            LEFT JOIN contract_tarifs T on P.tarif_id = T.id
+            LEFT JOIN contract_roles R on T.contract_role_id = R.id
+            LEFT JOIN users U on P.user_id = U.id
+            LEFT JOIN currencies CU on C.invoice_currency_id = CU.id
+            LEFT JOIN contract_invoice_base I on C.invoice_base_id = I.id
+            WHERE P.id = '@contract_persons@id@'
+            ORDER BY T.active desc
+        ",
+        "getByTarifId": "
+            SELECT  P.id,
+                    P.contract_id,
+                    C.description as contract_description,
+                    C.code as contract_code,
+                    R.id as contract_role_id,
+                    R.code as contract_role_code,
+                    R.description as contract_role_description,
+                    P.user_id,
+                    U.first_name,
+                    U.last_name,
+                    U.picture, 
+                    P.tarif_id,
+                    T.tarif as tarif,
+                    I.id as invoice_base_id,
+                    I.code as invoice_base_code,
+                    I.description as invoice_base_description,
+                    CU.id as currency_id,
+                    CU.code as currency_code,
+                    P.assigned_units,
+                    P.active
+            FROM contract_persons P 
+            LEFT JOIN contracts C on P.contract_id = C.id
+            LEFT JOIN contract_tarifs T on P.tarif_id = T.id
+            LEFT JOIN contract_roles R on T.contract_role_id = R.id
+            LEFT JOIN users U on P.user_id = U.id
+            LEFT JOIN currencies CU on C.invoice_currency_id = CU.id
+            LEFT JOIN contract_invoice_base I on C.invoice_base_id = I.id
+            WHERE P.tarif_id = '@contract_persons@tarif_id@'
+            ORDER BY T.active desc
+        ",
+        "checkExistence": "
+            SELECT count(*) as total 
+            FROM contract_persons 
+            WHERE contract_id = '@contract_persons@contract_id@' and 
+                  user_id = '@contract_persons@user_id@' and 
+                  tarif_id = '@contract_persons@tarif_id@'
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into contract_persons ( 
+                contract_id,
+                user_id,
+                tarif_id,
+                assigned_units,
+                active
+            )
+            VALUES (
+                '@contract_persons@contract_id@', 
+                '@contract_persons@user_id@',
+                '@contract_persons@tarif_id@',
+                0, 
+                '@contract_persons@active@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE contract_persons SET @fields@values@
+            WHERE id = '@contract_persons@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM contract_persons WHERE id = '@contract_persons@id@'
+        "
+    }
+}

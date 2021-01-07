@@ -1,0 +1,77 @@
+{
+    "select": {
+        "getAll": "
+            SELECT  H.id,
+                    H.user_id,
+                    U.first_name,
+                    U.last_name,
+                    H.year, 
+                    H.legal, 
+                    H.extra1, 
+                    H.extra2, 
+                    H.extra3, 
+                    H.extra4, 
+                    H.extra5
+            FROM holidays as H 
+                LEFT JOIN users U on U.id = H.user_id
+        ",
+        "getAllByOuId": "
+            SELECT  H.id,
+                    H.user_id,
+                    U.first_name,
+                    U.last_name,
+                    H.year, 
+                    H.legal, 
+                    H.extra1, 
+                    H.extra2, 
+                    H.extra3, 
+                    H.extra4, 
+                    H.extra5
+            FROM holidays as H 
+                LEFT JOIN users U on U.id = H.user_id
+                LEFT JOIN organisational_units O on O.id = U.ou_id
+            WHERE O.id = '@holidays@ou_id@'
+        ",
+        "checkExistenceByUserYear": "
+            SELECT count(*) as total 
+            FROM holidays 
+            WHERE user_id = '@holidays@user_id@' and
+                  year = '@holidays@year@'
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into holidays ( 
+                user_id,
+                year, 
+                legal, 
+                extra1, 
+                extra2, 
+                extra3, 
+                extra4, 
+                extra5
+            )
+            VALUES (
+                '@holidays@user_id@', 
+                '@holidays@year@', 
+                '@holidays@legal@',
+                '@holidays@extra1@',
+                '@holidays@extra2@',
+                '@holidays@extra3@',
+                '@holidays@extra4@',
+                '@holidays@extra5@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE holidays SET @fields@values@
+            WHERE id = '@holidays@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM holidays WHERE id = '@holidays@id@'
+        "
+    }
+}

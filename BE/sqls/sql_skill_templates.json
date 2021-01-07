@@ -1,0 +1,42 @@
+{
+    "select": {
+        "getAll": "
+            SELECT  
+                 id,
+                 code,
+                 description,
+                 active
+            FROM skill_templates 
+        ",
+        "checkExistenceById": "
+            SELECT count(*) as total 
+            FROM skill_templates 
+            WHERE id = '@skill_templates@id@'
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into skill_templates ( 
+                 code,
+                 description,
+                 active
+            )
+            VALUES (
+                 '@skill_templates@code@',
+                 '@skill_templates@description@',
+                 '@skill_templates@active@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE skill_templates SET @fields@values@
+            WHERE id = '@skill_templates@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM skill_templates WHERE id = '@skill_templates@id@'
+        "
+    }
+}

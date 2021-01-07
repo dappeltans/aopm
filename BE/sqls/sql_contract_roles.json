@@ -1,0 +1,39 @@
+{
+    "select": {
+        "getAll": "
+            SELECT  C.id,
+                    C.code, 
+                    C.description, 
+                    C.active
+            FROM contract_roles as C 
+        ",
+        "checkExistenceByCode": "
+            SELECT count(*) as total 
+            FROM contract_roles 
+            WHERE code = '@contract_roles@code@'
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into contract_roles ( code,
+                                        description,
+                                        active
+            )
+            VALUES ('@contract_roles@code@', 
+                    '@contract_roles@description@', 
+                    '@contract_roles@active@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE contract_roles SET @fields@values@
+            WHERE id = '@contract_roles@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM contract_roles WHERE id = '@contract_roles@id@'
+        "
+    }
+}

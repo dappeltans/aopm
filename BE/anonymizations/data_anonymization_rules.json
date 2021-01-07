@@ -1,0 +1,30 @@
+{
+    "users":{
+        "first_name" : { 
+            "ano_rule": "anolookup:firstnames&fixedString:_&counter:rowid"
+        },
+        "last_name" : {
+            "ano_rule": "anolookup:lastnames&fixedString:_&counter:rowid"
+        },
+        "email_address":{
+            "ano_rule": "anofield:first_name&fixedString:.&anofield:last_name&fixedString:@&fixedString:ou&fixedString:_&reffield:ou_id&fixedString:.com"
+        },
+        "phone_mobile": {
+            "ano_rule": "fixedString:mobilephone_&counter:rowid"
+        },
+        "phone_office": {
+            "ano_rule": "fixedString:officephone_&counter:rowid"
+        },
+        "picture":{
+            "ano_rule": "fixedString:---"
+        }
+    },
+    "customers":{
+        "name" : { 
+            "ano_rule": "anolookup:customers&fixedString:_&counter:rowid"
+        },
+        "code" : {
+            "ano_rule": "fixedString:c&counter:rowid"
+        }
+    }
+}

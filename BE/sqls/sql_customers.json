@@ -1,0 +1,81 @@
+{
+    "select": {
+        "getAllOffsetLimit": "
+            SELECT  
+                 id,
+                 name,
+                 code,
+                 fgcolor,
+                 bgcolor,
+                 ou_id,
+                 logo,
+                 active
+            FROM customers 
+            ORDER BY id 
+            LIMIT @pagination@limit@ OFFSET @pagination@offset@
+        ",
+        "getAll": "
+            SELECT  
+                 id,
+                 name,
+                 code,
+                 fgcolor,
+                 bgcolor,
+                 ou_id,
+                 logo,
+                 active
+            FROM customers 
+        ",
+        "getById": "
+            SELECT  
+                 id,
+                 name,
+                 code,
+                 fgcolor,
+                 bgcolor,
+                 ou_id,
+                 logo,
+                 active
+            FROM customers 
+            WHERE id = '@customers@id@'
+        ",
+        "checkExistenceByUniqueReference": "
+            SELECT count(*) as total 
+            FROM customers 
+            WHERE name = '@customers@name@'
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into customers ( 
+                 name,
+                 code,
+                 fgcolor,
+                 bgcolor,
+                 ou_id,
+                 logo,
+                 active
+            )
+            VALUES (
+                 '@customers@name@',
+                 '@customers@code@',
+                 '@customers@fgcolor@',
+                 '@customers@bgcolor@',
+                 '@customers@ou_id@',
+                 '@customers@logo@',
+                 '@customers@active@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE customers SET @fields@values@
+            WHERE id = '@customers@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM customers WHERE id = '@customers@id@'
+        "
+    }
+}

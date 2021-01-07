@@ -1,0 +1,15 @@
+{"level":30,"time":1609892679722,"pid":27444,"hostname":"LAPTOP-5HMVTD0G","msg":"Server listening at https://127.0.0.1:3001"}
+{"level":30,"time":1609892696596,"pid":27444,"hostname":"LAPTOP-5HMVTD0G","reqId":1,"req":{"method":"GET","url":"/api/countries","hostname":"localhost:3001","remoteAddress":"127.0.0.1","remotePort":50895},"msg":"incoming request"}
+{"level":30,"time":1609892696637,"pid":27444,"hostname":"LAPTOP-5HMVTD0G","reqId":1,"res":{"statusCode":200},"responseTime":40.32990002632141,"msg":"request completed"}
+{"level":30,"time":1609892903339,"pid":74904,"hostname":"LAPTOP-5HMVTD0G","msg":"Server listening at https://127.0.0.1:3001"}
+{"level":30,"time":1609892905609,"pid":74904,"hostname":"LAPTOP-5HMVTD0G","reqId":1,"req":{"method":"GET","url":"/api/countries","hostname":"localhost:3001","remoteAddress":"127.0.0.1","remotePort":50916},"msg":"incoming request"}
+{"level":30,"time":1609892905643,"pid":74904,"hostname":"LAPTOP-5HMVTD0G","reqId":1,"res":{"statusCode":200},"responseTime":30.26179999113083,"msg":"request completed"}
+{"level":30,"time":1609892908126,"pid":74904,"hostname":"LAPTOP-5HMVTD0G","reqId":2,"req":{"method":"GET","url":"/api/countries","hostname":"localhost:3001","remoteAddress":"127.0.0.1","remotePort":50916},"msg":"incoming request"}
+{"level":30,"time":1609892908131,"pid":74904,"hostname":"LAPTOP-5HMVTD0G","reqId":2,"res":{"statusCode":200},"responseTime":4.554199993610382,"msg":"request completed"}
+{"level":30,"time":1609893261294,"pid":37468,"hostname":"LAPTOP-5HMVTD0G","msg":"Server listening at https://127.0.0.1:3001"}
+{"level":30,"time":1609893265113,"pid":37468,"hostname":"LAPTOP-5HMVTD0G","reqId":1,"req":{"method":"GET","url":"/api/countries","hostname":"localhost:3001","remoteAddress":"127.0.0.1","remotePort":51007},"msg":"incoming request"}
+{"level":30,"time":1609893265148,"pid":37468,"hostname":"LAPTOP-5HMVTD0G","reqId":1,"res":{"statusCode":200},"responseTime":33.91419994831085,"msg":"request completed"}
+{"level":30,"time":1609893265809,"pid":37468,"hostname":"LAPTOP-5HMVTD0G","reqId":2,"req":{"method":"GET","url":"/api/countries","hostname":"localhost:3001","remoteAddress":"127.0.0.1","remotePort":51007},"msg":"incoming request"}
+{"level":30,"time":1609893265814,"pid":37468,"hostname":"LAPTOP-5HMVTD0G","reqId":2,"res":{"statusCode":200},"responseTime":4.941700041294098,"msg":"request completed"}
+{"level":30,"time":1609893272967,"pid":37468,"hostname":"LAPTOP-5HMVTD0G","reqId":3,"req":{"method":"GET","url":"/api/countries","hostname":"localhost:3001","remoteAddress":"127.0.0.1","remotePort":51009},"msg":"incoming request"}
+{"level":30,"time":1609893272972,"pid":37468,"hostname":"LAPTOP-5HMVTD0G","reqId":3,"res":{"statusCode":200},"responseTime":4.069700002670288,"msg":"request completed"}

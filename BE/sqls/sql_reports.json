@@ -1,0 +1,39 @@
+{
+    "select": {
+        "getAll": "
+            SELECT  C.id,
+                    C.code, 
+                    C.description, 
+                    C.active
+            FROM reports as C 
+        ",
+        "checkExistenceByCode": "
+            SELECT count(*) as total 
+            FROM reports 
+            WHERE code = '@reports@code@'
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into reports ( code,
+                                        description,
+                                        active
+            )
+            VALUES ('@reports@code@', 
+                    '@reports@description@', 
+                    '@reports@active@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE reports SET @fields@values@
+            WHERE id = '@reports@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM reports WHERE id = '@reports@id@'
+        "
+    }
+}

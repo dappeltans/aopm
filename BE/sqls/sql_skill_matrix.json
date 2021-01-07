@@ -1,0 +1,65 @@
+{
+    "select": {
+        "getAll": "
+            SELECT  
+                 id,
+                 skill_id,
+                 user_id,
+                 grade_id
+            FROM skill_matrix
+            WHERE user_id IN (
+                @skill_matrix@selectedUserIdsList@
+            )
+        ",
+        "checkExistenceByUnique_ref_id": "
+            SELECT count(*) as total 
+            FROM skill_matrix 
+            WHERE unique_ref_id = '@skill_matrix@unique_ref_id@'
+        ",
+        "checkExistenceBySkillIdAndUserId": "
+            SELECT count(*) as total 
+            FROM skill_matrix 
+            WHERE user_id = '@skill_matrix@user_id@' and skill_id = '@skill_matrix@skill_id@'
+        ",
+        "getSpecificUserIds": "
+            SELECT user_id 
+            FROM skill_matrix M
+            LEFT JOIN users U on U.id = M.user_id
+            LEFT JOIN organisational_units O on U.ou_id = O.id
+            WHERE ( 
+                @skill_matrix@skills_requested@
+            ) and U.ou_id IN (
+                @skill_matrix@organisational_unit_ids@
+            )
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into skill_matrix ( 
+                 skill_id,
+                 user_id,
+                 grade_id
+            )
+            VALUES (
+                 '@skill_matrix@skill_id@',
+                 '@skill_matrix@user_id@',
+                 '@skill_matrix@grade_id@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE skill_matrix SET @fields@values@
+            WHERE id = '@skill_matrix@id@'
+         ",
+         "updateByUserIdAndSkillId": "
+         UPDATE skill_matrix SET grade_id = '@skill_matrix@grade_id@'
+         WHERE user_id = '@skill_matrix@user_id@' and skill_id = '@skill_matrix@skill_id@'
+      "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM skill_matrix WHERE id = '@skill_matrix@id@'
+        "
+    }
+}

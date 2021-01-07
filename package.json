@@ -1,0 +1,44 @@
+{
+  "name": "aopm",
+  "version": "1.0.0",
+  "description": "Apixu open project management",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "start2": "node server.js | pino-tee warn ./BE/_logs/warn-logs debug ./BE/_logs/debug-logs info ./BE/_logs/info-logs error ./BE/_logs/error-logs fatal ./BE/_logs/fatal-logs > ./BE/_logs/all-logs",
+    "test": "jest --verbose"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "keywords": [],
+  "author": "David Appeltans",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "dotenv": "^8.2.0",
+    "fastify": "^3.9.1",
+    "fastify-cookie": "^5.0.2",
+    "fastify-express": "^0.3.2",
+    "fastify-plugin": "^3.0.0",
+    "fastify-swagger": "^3.5.0",
+    "fs": "0.0.1-security",
+    "g": "^2.0.1",
+    "http": "0.0.1-security",
+    "jsonschema": "^1.4.0",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.2.5",
+    "os": "^0.1.1",
+    "pino": "^6.9.0",
+    "pino-pretty": "^4.3.0",
+    "pino-tee": "^0.3.0",
+    "randexp": "^0.5.3",
+    "validatorjs": "^3.22.1",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}

@@ -1,0 +1,294 @@
+{
+    "select": {
+        "getAllByCustomerIdAndMax": "
+            SELECT 
+                C.id as customer_id,
+                C.name as customer_name,
+                C.code as customer_code,
+                OU.id as ou_id,
+                OU.name as ou_name,
+                OU.code as ou_code,
+                S.id,
+                DATE_FORMAT(S.crm_event_datetime, '%Y-%m-%d %H:%i:%s') as crm_event_datetime,
+                DATE_FORMAT(S.crm_event_datetime_created, '%Y-%m-%d %H:%i:%s') as crm_event_datetime_created,
+                DATE_FORMAT(S.crm_event_datetime_last_update, '%Y-%m-%d %H:%i:%s') as crm_event_datetime_last_update,
+                S.creation_user_id,
+                S.creation_user_first_name,
+                S.creation_user_last_name,
+                S.last_update_user_id,
+                S.last_update_user_first_name,
+                S.last_update_user_last_name,
+                S.crm_event_type_id,
+                S.crm_event_type_code,
+                S.crm_event_type_description,
+                S.crm_event_type_icon,
+                S.info,
+                S.required_next_action_indicator,
+                S.required_next_action,
+                S.required_next_action_person_id,
+                S.contact_first_name,
+                S.contact_last_name,
+                S.contact_function,
+                DATE_FORMAT(S.followup_date, '%Y-%m-%d') as followup_date,
+                DATE_FORMAT(S.followup_time, '%H:%i:%s') as followup_time,
+                S.active
+            FROM (
+                    select * from customers where id IN (
+                        @crm_events@selectedCustomersList@
+                    )
+                ) C
+                LEFT JOIN organisational_units OU on C.ou_id = OU.id
+                LEFT JOIN (
+                            SELECT  
+                                E.id,
+                                E.crm_event_datetime,
+                                E.crm_event_datetime_created,
+                                E.crm_event_datetime_last_update,
+                                E.user_id_creation as creation_user_id,
+                                UC.first_name as creation_user_first_name,
+                                UC.last_name as creation_user_last_name,
+                                E.user_id_last_update as last_update_user_id,
+                                UU.first_name as last_update_user_first_name,
+                                UU.last_name as last_update_user_last_name,
+                                O.id as ou_id,
+                                O.name as ou_name,
+                                O.code as ou_code,
+                                E.customer_id,
+                                C.name as customer_name,
+                                C.code as customer_code,
+                                E.crm_event_type_id as crm_event_type_id,
+                                T.code as crm_event_type_code,
+                                T.description as crm_event_type_description,
+                                T.icon as crm_event_type_icon,
+                                E.info,
+                                E.required_next_action_indicator,
+                                E.required_next_action,
+                                E.required_next_action_person_id,
+                                CC.first_name as contact_first_name,
+                                CC.last_name as contact_last_name,
+                                CC.function as contact_function,
+                                E.followup_date,
+                                E.followup_time,
+                                E.active
+                            FROM crm_events E
+                                LEFT JOIN crm_event_types T on E.crm_event_type_id = T.id 
+                                LEFT JOIN users UC on E.user_id_creation = UC.id
+                                LEFT JOIN users UU on E.user_id_last_update = UU.id 
+                                LEFT JOIN customers C on E.customer_id = C.id
+                                LEFT JOIN organisational_units O on C.ou_id = O.id
+                                LEFT JOIN customer_contacts CC on E.required_next_action_person_id = CC.id
+                            WHERE C.id IN (
+                                @crm_events@selectedCustomersList@
+                            )
+                ) S on C.id = S.customer_id
+                ORDER BY ou_name asc, customer_name asc, crm_event_datetime desc
+
+        ",
+        "getAllByCustomerId": "
+                SELECT 
+                    C.id as customer_id,
+                    C.name as customer_name,
+                    C.code as customer_code,
+                    C.id as ou_id,
+                    S.ou_name,
+                    S.ou_code,
+                    S.id,
+                    DATE_FORMAT(S.crm_event_datetime, '%Y-%m-%d %H:%i:%s') as crm_event_datetime,
+                    DATE_FORMAT(S.crm_event_datetime_created, '%Y-%m-%d %H:%i:%s') as crm_event_datetime_created,
+                    DATE_FORMAT(S.crm_event_datetime_last_update, '%Y-%m-%d %H:%i:%s') as crm_event_datetime_last_update,
+                    S.creation_user_id,
+                    S.creation_user_first_name,
+                    S.creation_user_last_name,
+                    S.last_update_user_id,
+                    S.last_update_user_first_name,
+                    S.last_update_user_last_name,
+                    S.crm_event_type_id,
+                    S.crm_event_type_code,
+                    S.crm_event_type_description,
+                    S.crm_event_type_icon,
+                    S.info,
+                    S.required_next_action_indicator,
+                    S.required_next_action,
+                    S.required_next_action_person_id,
+                    S.contact_first_name,
+                    S.contact_last_name,
+                    S.contact_function,
+                    DATE_FORMAT(S.followup_date, '%Y-%m-%d') as followup_date,
+                    DATE_FORMAT(S.followup_time, '%H:%i:%s') as followup_time,
+                    S.active
+                FROM customers C
+                    LEFT JOIN (
+                                    SELECT  
+                                        E.id,
+                                        E.crm_event_datetime,
+                                        E.crm_event_datetime_created,
+                                        E.crm_event_datetime_last_update,
+                                        E.user_id_creation as creation_user_id,
+                                        UC.first_name as creation_user_first_name,
+                                        UC.last_name as creation_user_last_name,
+                                        E.user_id_last_update as last_update_user_id,
+                                        UU.first_name as last_update_user_first_name,
+                                        UU.last_name as last_update_user_last_name,
+                                        O.id as ou_id,
+                                        O.name as ou_name,
+                                        O.code as ou_code,
+                                        E.customer_id,
+                                        C.name as customer_name,
+                                        C.code as customer_code,
+                                        E.crm_event_type_id as crm_event_type_id,
+                                        T.code as crm_event_type_code,
+                                        T.description as crm_event_type_description,
+                                        T.icon as crm_event_type_icon,
+                                        E.info,
+                                        E.required_next_action_indicator,
+                                        E.required_next_action,
+                                        E.required_next_action_person_id,
+                                        CC.first_name as contact_first_name,
+                                        CC.last_name as contact_last_name,
+                                        CC.function as contact_function,
+                                        E.followup_date,
+                                        E.followup_time,
+                                        E.active
+                                    FROM crm_events E
+                                        LEFT JOIN crm_event_types T on E.crm_event_type_id = T.id 
+                                        LEFT JOIN users UC on E.user_id_creation = UC.id
+                                        LEFT JOIN users UU on E.user_id_last_update = UU.id 
+                                        LEFT JOIN customers C on E.customer_id = C.id
+                                        LEFT JOIN organisational_units O on C.ou_id = O.id
+                                        LEFT JOIN customer_contacts CC on E.required_next_action_person_id = CC.id
+                                    WHERE C.id = '@crm_events@customer_id@'
+                    ) S on C.id = S.customer_id
+                WHERE C.id = '@crm_events@customer_id@'
+                ORDER BY ou_name asc, customer_name asc, crm_event_datetime desc
+        ",
+        "getAllByOuId": "
+            SELECT 
+                C.id as customer_id,
+                C.name as customer_name,
+                C.code as customer_code,
+                C.ou_id,
+                S.ou_name,
+                S.ou_code,
+                S.id,
+                DATE_FORMAT(S.crm_event_datetime, '%Y-%m-%d %H:%i:%s') as crm_event_datetime,
+                DATE_FORMAT(S.crm_event_datetime_created, '%Y-%m-%d %H:%i:%s') as crm_event_datetime_created,
+                DATE_FORMAT(S.crm_event_datetime_last_update, '%Y-%m-%d %H:%i:%s') as crm_event_datetime_last_update,
+                S.creation_user_id,
+                S.creation_user_first_name,
+                S.creation_user_last_name,
+                S.last_update_user_id,
+                S.last_update_user_first_name,
+                S.last_update_user_last_name,
+                S.crm_event_type_id,
+                S.crm_event_type_code,
+                S.crm_event_type_description,
+                S.crm_event_type_icon,
+                S.info,
+                S.required_next_action_indicator,
+                S.required_next_action,
+                S.required_next_action_person_id,
+                S.contact_first_name,
+                S.contact_last_name,
+                S.contact_function,
+                DATE_FORMAT(S.followup_date, '%Y-%m-%d') as followup_date,
+                DATE_FORMAT(S.followup_time, '%H:%i:%s') as followup_time,
+                S.active
+            FROM customers C
+                LEFT JOIN (
+                                SELECT  
+                                    E.id,
+                                    E.crm_event_datetime,
+                                    E.crm_event_datetime_created,
+                                    E.crm_event_datetime_last_update,
+                                    E.user_id_creation as creation_user_id,
+                                    UC.first_name as creation_user_first_name,
+                                    UC.last_name as creation_user_last_name,
+                                    E.user_id_last_update as last_update_user_id,
+                                    UU.first_name as last_update_user_first_name,
+                                    UU.last_name as last_update_user_last_name,
+                                    O.id as ou_id,
+                                    O.name as ou_name,
+                                    O.code as ou_code,
+                                    E.customer_id,
+                                    C.name as customer_name,
+                                    C.code as customer_code,
+                                    E.crm_event_type_id as crm_event_type_id,
+                                    T.code as crm_event_type_code,
+                                    T.description as crm_event_type_description,
+                                    T.icon as crm_event_type_icon,
+                                    E.info,
+                                    E.required_next_action_indicator,
+                                    E.required_next_action,
+                                    E.required_next_action_person_id,
+                                    CC.first_name as contact_first_name,
+                                    CC.last_name as contact_last_name,
+                                    CC.function as contact_function,
+                                    E.followup_date,
+                                    E.followup_time,
+                                    E.active
+                                FROM crm_events E
+                                    LEFT JOIN crm_event_types T on E.crm_event_type_id = T.id 
+                                    LEFT JOIN users UC on E.user_id_creation = UC.id
+                                    LEFT JOIN users UU on E.user_id_last_update = UU.id 
+                                    LEFT JOIN customers C on E.customer_id = C.id
+                                    LEFT JOIN organisational_units O on C.ou_id = O.id
+                                    LEFT JOIN customer_contacts CC on E.required_next_action_person_id = CC.id
+                                WHERE O.id = '@crm_events@ou_id@'
+                ) S on C.id = S.customer_id
+                WHERE C.ou_id = '@crm_events@ou_id@'
+                ORDER BY ou_name asc, customer_name asc, crm_event_datetime desc
+        ",
+        "checkExistenceById": "
+            SELECT count(*) as total 
+            FROM crm_events 
+            WHERE id = '@crm_events@id@'
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into crm_events ( 
+                 crm_event_datetime,
+                 crm_event_datetime_created,
+                 crm_event_datetime_last_update,
+                 user_id_creation,
+                 user_id_last_update,
+                 ou_id,
+                 customer_id,
+                 crm_event_type_id,
+                 info,
+                 required_next_action_indicator,
+                 required_next_action,
+                 followup_date,
+                 followup_time,
+                 active
+            )
+            VALUES (
+                 '@crm_events@crm_event_datetime@',
+                 '@crm_events@crm_event_datetime_created@',
+                 '@crm_events@crm_event_datetime_last_update@',
+                 '@crm_events@user_id_creation@',
+                 '@crm_events@user_id_last_update@',
+                 '@crm_events@ou_id@',
+                 '@crm_events@customer_id@',
+                 '@crm_events@crm_event_type_id@',
+                 '@crm_events@info@',
+                 '@crm_events@required_next_action_indicator@',
+                 '@crm_events@required_next_action@',
+                 '@crm_events@followup_date@',
+                 '@crm_events@followup_time@',
+                 '@crm_events@active@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE crm_events SET @fields@values@
+            WHERE id = '@crm_events@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM crm_events WHERE id = '@crm_events@id@'
+        "
+    }
+}

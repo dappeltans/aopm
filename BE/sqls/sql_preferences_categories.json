@@ -1,0 +1,39 @@
+{
+    "select": {
+        "getAll": "
+            SELECT  C.id,
+                    C.code, 
+                    C.description, 
+                    C.active
+            FROM preferences_categories as C 
+        ",
+        "checkExistenceByCode": "
+            SELECT count(*) as total 
+            FROM preferences_categories 
+            WHERE code = '@preferences_categories@code@'
+        "
+    },
+    "insert": {
+        "createNew": "
+            INSERT into preferences_categories ( code,
+                                        description,
+                                        active
+            )
+            VALUES ('@preferences_categories@code@', 
+                    '@preferences_categories@description@', 
+                    '@preferences_categories@active@'
+            )
+        "
+    },
+    "update": {
+        "updateById": "
+            UPDATE preferences_categories SET @fields@values@
+            WHERE id = '@preferences_categories@id@'
+         "
+    },
+    "delete": {
+        "deleteById": "
+            DELETE FROM preferences_categories WHERE id = '@preferences_categories@id@'
+        "
+    }
+}
